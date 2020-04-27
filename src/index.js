@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+let baseURL = "https://pokeapi.co/api/v2/";
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
