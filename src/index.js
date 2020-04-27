@@ -8,7 +8,7 @@ let baseURL = "https://pokeapi.co/api/v2/";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App baseURL={baseURL}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
