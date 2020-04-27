@@ -1,10 +1,12 @@
+// import $ from 'jquery';
+// import Popper from 'popper.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-let baseURL = "https://pokeapi.co/api/v2/";
+let baseURL = "https://pokeapi.co/api/v2/pokemon";
 
 ReactDOM.render(
   <React.StrictMode>

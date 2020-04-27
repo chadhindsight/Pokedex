@@ -41,9 +41,11 @@ class App extends Component {
         if (this.state.pokemon.length === 0) { return '...loading' }
     
         return (
-        <Col sm={8} md={10} smoffset={2} mdoffset={1}>
+       <div>   
+        <Col sm={8} md={12} smoffset={2} mdoffset={1}>
           <PokeList listOfPokemon={this.state.pokemon} />
         </Col>
+      </div>  
     );
   }
 }
