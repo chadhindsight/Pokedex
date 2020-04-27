@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import PokeList from './components/PokeList';
-import { Col } from 'react-bootstrap'
+import { Col, Pagination } from 'react-bootstrap'
 
 class App extends Component {
   state = {
-    pokemon: []
+    pokemon: [],
+    activePage: 0,
+    limit: 40,
+    // Every time we change page, we need to update the offset
+    offset: 0,
+    totalPages: 0
   }
 
   // Doing func this way sets the 'this' context so you dont need to use bind
   loadPokemon = async (url) => {
 
     try {
-      let res = await axios.get('https://pokeapi.co/api/v2/pokemon/')
+      let res = await axios.get(url)
         console.log(res)
+        
+        let pages = Math.round(res.count / this.state.limit)
         this.setState({
-          pokemon: [...res.data.results]
+          pokemon: [...res.data.results],
+          totalPages: pages,
+          count: res.coun
         })
       }
       //Error Handling if request fails
@@ -24,9 +33,9 @@ class App extends Component {
       }
     
   }
-
+  // Load pokemon once component renders
   componentDidMount() {
-    this.loadPokemon()
+    this.loadPokemon(this.props.baseURL) 
   }
   // componentDidMount = () => {
   //   axios.get(`https:pokeapi.co/api/v2/pokemon`)
@@ -45,6 +54,11 @@ class App extends Component {
         <Col sm={8} md={12} smoffset={2} mdoffset={1}>
           <PokeList listOfPokemon={this.state.pokemon} />
         </Col>
+
+            <Col sm={12}>
+              <Pagination
+              />
+            </Col>
       </div>  
     );
   }
