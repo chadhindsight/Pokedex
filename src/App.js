@@ -26,7 +26,7 @@ class App extends Component {
         this.setState({
           pokemon: [...res.data.results],
           totalPages: pages,
-          count: res.coun
+          count: res.count
         })
       }
       //Error Handling if request fails
@@ -39,9 +39,13 @@ class App extends Component {
   componentDidMount() {
     this.loadPokemon(this.props.baseURL) 
   }
-//This fires when a user clicks a different page
-handlePaginationSelect =() =>{
-  
+
+  //This method fires when a user clicks a different page and returns result of a new call to the related endpoint
+handlePaginationSelect =(page) =>{
+  console.log(page)
+  // Fix offset later
+  let offset =this.state.limit * Number(page.target.innerText)
+  this.loadPokemon(`${this.props.baseURL}?limit=${this.state.limit}&offset=${offset}`);
 }
 
   render() {
@@ -55,17 +59,19 @@ handlePaginationSelect =() =>{
         </Col>
 
             <Col sm={12}>
-              <Pagination>
+              <Pagination onClick={this.handlePaginationSelect}>
                 <Pagination.First />
                 <Pagination.Prev />
                 <Pagination.Item>{1}</Pagination.Item>
+                <Pagination.Item>{2}</Pagination.Item>
+                <Pagination.Item>{3}</Pagination.Item>
                 <Pagination.Ellipsis />
 
                 <Pagination.Item>{10}</Pagination.Item>
                 <Pagination.Item>{11}</Pagination.Item>
                 <Pagination.Item active>{12}</Pagination.Item>
                 <Pagination.Item>{13}</Pagination.Item>
-                <Pagination.Item disabled>{14}</Pagination.Item>
+
 
                 <Pagination.Ellipsis />
                 <Pagination.Item>{20}</Pagination.Item>
