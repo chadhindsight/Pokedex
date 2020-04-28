@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import PokeList from './components/PokeList';
-import { Col, Pagination } from 'react-bootstrap'
-
+import { Col} from 'react-bootstrap';
+import Pagination from 'react-bootstrap/Pagination'
 class App extends Component {
   state = {
     pokemon: [],
@@ -57,7 +57,11 @@ class App extends Component {
 
             <Col sm={12}>
               <Pagination
-              />
+                // bsSize="small"
+                // items={this.state.totalPages}
+                // activePage={this.state.activePage}
+              >
+              </Pagination>
             </Col>
       </div>  
     );
