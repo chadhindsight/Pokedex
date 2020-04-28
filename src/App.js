@@ -3,17 +3,19 @@ import axios from 'axios';
 import PokeList from './components/PokeList';
 import { Col} from 'react-bootstrap';
 import Pagination from 'react-bootstrap/Pagination'
+// import PageItem from 'react-bootstrap/PageItem'
+
 class App extends Component {
   state = {
     pokemon: [],
     activePage: 0,
     limit: 40,
-    // Every time we change page, we need to update the offset
+    // Every time we change page, we need to update the offset. Might remove this later
     offset: 0,
     totalPages: 0
   }
 
-  // Doing func this way sets the 'this' context so you dont need to use bind
+  // Doing func this way sets the 'this' context so you dont need to use a bind method
   loadPokemon = async (url) => {
 
     try {
@@ -33,17 +35,14 @@ class App extends Component {
       }
     
   }
-  // Load pokemon once component renders
+  // Load first set of pokemon once component renders
   componentDidMount() {
     this.loadPokemon(this.props.baseURL) 
   }
-  // componentDidMount = () => {
-  //   axios.get(`https:pokeapi.co/api/v2/pokemon`)
-  //   .then(response => {
-  //     console.log(response)
-  //   })
-  //       .catch(err => console.log(err))
-  // }
+//This fires when a user clicks a different page
+handlePaginationSelect =() =>{
+  
+}
 
   render() {
     console.log(this.state.pokemon)
@@ -56,11 +55,22 @@ class App extends Component {
         </Col>
 
             <Col sm={12}>
-              <Pagination
-                // bsSize="small"
-                // items={this.state.totalPages}
-                // activePage={this.state.activePage}
-              >
+              <Pagination>
+                <Pagination.First />
+                <Pagination.Prev />
+                <Pagination.Item>{1}</Pagination.Item>
+                <Pagination.Ellipsis />
+
+                <Pagination.Item>{10}</Pagination.Item>
+                <Pagination.Item>{11}</Pagination.Item>
+                <Pagination.Item active>{12}</Pagination.Item>
+                <Pagination.Item>{13}</Pagination.Item>
+                <Pagination.Item disabled>{14}</Pagination.Item>
+
+                <Pagination.Ellipsis />
+                <Pagination.Item>{20}</Pagination.Item>
+                <Pagination.Next />
+                <Pagination.Last />
               </Pagination>
             </Col>
       </div>  
