@@ -48,6 +48,31 @@ handlePaginationSelect =(page) =>{
   this.loadPokemon(`${this.props.baseURL}?limit=${this.state.limit}&offset=${offset}`);
 }
 
+// PAGINATION LOGIC
+ pagination = ()=> {
+    let items = [];
+   
+    for (let number = 1; number <= 5; number++) {
+     items.push(
+       <Pagination.Item key={number}>
+         {number}
+       </Pagination.Item>
+     );
+   }
+
+  return(
+    <div>
+      <Pagination onClick={this.handlePaginationSelect}>{items}
+        <Pagination.Ellipsis />
+        <Pagination.First />
+        <Pagination.Prev />
+        <Pagination.Next />
+        <Pagination.Last />
+      </Pagination>
+    </div>
+  )
+ };
+
   render() {
     console.log(this.state.pokemon)
         if (this.state.pokemon.length === 0) { return '...loading' }
@@ -59,25 +84,7 @@ handlePaginationSelect =(page) =>{
         </Col>
 
             <Col sm={12}>
-              <Pagination onClick={this.handlePaginationSelect}>
-                <Pagination.First />
-                <Pagination.Prev />
-                <Pagination.Item>{1}</Pagination.Item>
-                <Pagination.Item>{2}</Pagination.Item>
-                <Pagination.Item>{3}</Pagination.Item>
-                <Pagination.Ellipsis />
-
-                <Pagination.Item>{10}</Pagination.Item>
-                <Pagination.Item>{11}</Pagination.Item>
-                <Pagination.Item active>{12}</Pagination.Item>
-                <Pagination.Item>{13}</Pagination.Item>
-
-
-                <Pagination.Ellipsis />
-                <Pagination.Item>{20}</Pagination.Item>
-                <Pagination.Next />
-                <Pagination.Last />
-              </Pagination>
+            {this.pagination()}
             </Col>
       </div>  
     );
@@ -85,5 +92,5 @@ handlePaginationSelect =(page) =>{
 }
 
 // sm = { 8} md = { 10} smOffset = { 2} mdOffset = { 1}
-
+//  <Pagination.Item>{1}</Pagination.Item>
 export default App;
