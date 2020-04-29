@@ -11,7 +11,7 @@ class PokeDetails extends Component {
         // Get the key word from your URL endpoint and check if it matches a value from the pokemon array
         // let pokemonId = this.props.match.params.id
         let pokemonId = this.props.match.params.id
-        // Get the url that will be used for axios request
+        // Get the url that will be used for axios request!
         let pokeURL = this.props.pokemon.find(pokemon => {
             return pokemon.name === pokemonId
         })
