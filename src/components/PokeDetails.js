@@ -1,14 +1,29 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 class PokeDetails extends Component {
-      // might have to make a new request
-        //Use this.props.match.params.find() to target the pokemon you want the information for
-        // console.log(this.props.pokemon)
+    // Might have to make a new request with the url accessed from the url key in the pokemon object 
+    // Call it in componentDidMount()
+    //Use this.props.pokemon.find() to target the pokemon you want the information for
+    // console.log(this.props.pokemon)
     // Displays the information for the selected pokemon
-    displayDetails = (selectedPokemon) => {
 
+    displayDetails = (selectedPokemon) => {
+        // Get the key word from URL endpoint and check if it matches value from the pokemon array
+        // let pokemonId = this.props.match.params.id
+        // let pokeURL = this.props.pokemon.find(name=>{
+        //     return name = pokemonId
+        // })
+        
+        // // console.log(pokemonId)
     }
+
     render() {
+        let pokemonId = this.props.match.params.id
+        let pokeURL = this.props.pokemon.find(pokemon => {
+            return pokemon.name === pokemonId
+        })
+        console.log(pokeURL)
+        // console.log(pokemonId)
         return (
             <div>
                 <h2>pokemon stuff!</h2>
