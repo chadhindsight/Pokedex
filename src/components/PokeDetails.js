@@ -14,8 +14,15 @@ class PokeDetails extends Component {
         let specificPokemon = this.props.pokemon.find(pokemon => {
             return pokemon.name === pokemonId
         })
-        let response = await axios.get(`${specificPokemon.url}`)
         
+        let response = await axios.get(`${specificPokemon.url}`)
+        let moves = response.data.moves.slice(0,3).map(move => move.move.name)
+    // Return Name, Type, Moves, Weight, Game appearances(game_indices)
+    console.log(response.data)
+    console.log(response.data.name, response.data.types[0].type.name)
+    console.log(moves)
+    console.log(response.data.weight)
+    console.log(response.data.game_indices.length)    
     }
 
     componentDidMount() {
