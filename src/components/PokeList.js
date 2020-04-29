@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 const PokeList = ({ listOfPokemon }) => {
 
     let pokemon = listOfPokemon.map((monster) => {
-        console.log(monster.name)
+        // console.log(monster.name)
         return (
             <Col sm={6} md={4} key={monster.name}>
-                <Link to={`:${monster.name}`}><ListGroupItem className='PokeList-item'>{monster.name}</ListGroupItem></Link>
+                <Link to={`/pokemon/${monster.name}`}><ListGroupItem className='PokeList-item'>{monster.name}</ListGroupItem></Link>
             </Col>
         )
     });
