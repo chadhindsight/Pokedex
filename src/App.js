@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './App.css'
+import './App.css';
+import PokeDetails from './components/PokeDetails';
 import PokeList from './components/PokeList';
 import { Col} from 'react-bootstrap';
 import Pagination from 'react-bootstrap/Pagination'
 import {Route, Switch} from 'react-router-dom';
+
 class App extends Component {
   state = {
     pokemon: [],
@@ -15,11 +17,10 @@ class App extends Component {
     totalPages: 0
   }
 
-  // Doing func this way sets the 'this' context so you dont need to use a bind method
+  // Making a func this way sets the 'this' context so you dont need to use a bind method
   loadPokemon = async (url) => {
     try {
       let res = await axios.get(url)
-        console.log(res.data.count)
         
         let pages = Math.round(res.data.count / this.state.limit)
         this.setState({
@@ -29,20 +30,23 @@ class App extends Component {
         })
         console.log(this.state.totalPages)
       }
-      //Error Handling if request fails
+      //Error Handling if the request fails
       catch (err) {
-        console.log(`The error is ${err}`);
+        console.log(`A ${err} was returned. Something is off :(`) ;
       }
     
   }
-  // Load first set of pokemon once component renders
+  // Load initial set of pokemon once component renders
   componentDidMount() {
     this.loadPokemon(this.props.baseURL) 
   }
+// Displays the information for the selected pokemon
+selectPokemon = (selectedPokemon) =>{
+
+}
 
   //This method fires when a user clicks a different page and returns result of a new call to the related endpoint
 handlePaginationSelect =(page) =>{
- console.log(this.state.activePage)
   // Fix offset later
 let offset =this.state.limit * Number(page.target.innerText)
   this.loadPokemon(`${this.props.baseURL}?limit=${this.state.limit}&offset=${offset}`);
@@ -54,7 +58,7 @@ let offset =this.state.limit * Number(page.target.innerText)
 
     for (let number = 1; number <= this.state.totalPages; number++) {
      items.push(
-       <Pagination.Item key={number} >
+       <Pagination.Item key={number} className="buns">
          {number}
        </Pagination.Item>
      );
@@ -74,7 +78,6 @@ let offset =this.state.limit * Number(page.target.innerText)
  };
 
   render() {
-    console.log(this.state.pokemon)
         if (this.state.pokemon.length === 0) { return '...loading' }
     
         return (
@@ -83,12 +86,11 @@ let offset =this.state.limit * Number(page.target.innerText)
           <PokeList listOfPokemon={this.state.pokemon} />
         </Col>
           <Switch>
-              {/* <Route exact path={} {...props pokemon={this.state.pokemon}}></Route> */}
+              <Route path='/pokemon/:id' component={props => <PokeDetails {...props} pokemon={this.state.pokemon}/>} />
           </Switch>
             <Col sm={12}>
             {this.pagination()}
-            </Col>
-            {<h2>pokemon stuff</h2>}
+            </Col> 
       </div>  
     );
   }
