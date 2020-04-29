@@ -8,22 +8,19 @@ class PokeDetails extends Component {
     // Displays the information for the selected pokemon
 
     displayDetails = (selectedPokemon) => {
-        // Get the key word from URL endpoint and check if it matches value from the pokemon array
+        // Get the key word from your URL endpoint and check if it matches a value from the pokemon array
         // let pokemonId = this.props.match.params.id
-        // let pokeURL = this.props.pokemon.find(name=>{
-        //     return name = pokemonId
-        // })
-        
-        // // console.log(pokemonId)
-    }
-
-    render() {
         let pokemonId = this.props.match.params.id
+        // Get the url that will be used for axios request
         let pokeURL = this.props.pokemon.find(pokemon => {
             return pokemon.name === pokemonId
         })
         console.log(pokeURL)
-        // console.log(pokemonId)
+        // // console.log(pokemonId)
+    }
+
+    render() {
+       
         return (
             <div>
                 <h2>pokemon stuff!</h2>
