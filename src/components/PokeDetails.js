@@ -39,8 +39,8 @@ class PokeDetails extends Component {
                 <ul>
                     Move List: {this.state.moves}
                 </ul>
-                <p> Weight: {this.state.weight}</p>
-                <p>Game appearance: {this.state.appearances}</p>
+                <p> Weight: {this.state.weight} lbs.</p>
+                <p>Game appearances: {this.state.appearances}</p>
             </div>
         )
     }
