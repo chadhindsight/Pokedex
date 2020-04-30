@@ -8,7 +8,8 @@ class PokeDetails extends Component {
         type: '',
         moves: [],
         weight: 0,
-        appearances: 0
+        appearances: 0,
+        img: ''
 
     }
 
@@ -22,14 +23,16 @@ class PokeDetails extends Component {
         // Use that same url to make a request and use data from the response
         let response = await axios.get(`${specificPokemon.url}`)
         let moves = response.data.moves.slice(0, 3).map(item => item.move.name)
-        // Return Name, Type, Moves, Weight, Game appearances(game_indices)
+        // Set Name, Type, Moves, Weight, Game appearances(game_indices) & Photo
         this.setState({
             pokemonName: response.data.name,
             type: response.data.types[0].type.name,
             moves: moves,
             weight: response.data.weight,
-            appearances: response.data.game_indices.length
+            appearances: response.data.game_indices.length,
+            img: response.data.sprites.front_default
         })
+        // console.log(this.state.img)
     }
     displayDetails = () => {
         return (
@@ -41,6 +44,7 @@ class PokeDetails extends Component {
                 </ul>
                 <p> Weight: {this.state.weight} lbs.</p>
                 <p>Game appearances: {this.state.appearances}</p>
+                <img src={this.state.img} alt="what the pokemon looks like" height="150"/>
             </div>
         )
     }
