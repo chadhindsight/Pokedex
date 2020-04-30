@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-import PokeDetails from './components/PokeDetails';
 import PokeList from './components/PokeList';
-import { Col } from 'react-bootstrap';
 import Pagination from 'react-bootstrap/Pagination'
 import { Route, Switch, Link } from 'react-router-dom';
-import { FacebookShareButton, FacebookIcon, FacebookShareCount, TwitterIcon, InstapaperShareButton, LinkedIn} from 'react-share';
 
 class App extends Component {
   state = {
