@@ -5,7 +5,8 @@ import PokeDetails from './components/PokeDetails';
 import PokeList from './components/PokeList';
 import { Col } from 'react-bootstrap';
 import Pagination from 'react-bootstrap/Pagination'
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
+import { FacebookShareButton, FacebookIcon, FacebookShareCount, TwitterIcon, InstapaperShareButton, LinkedIn} from 'react-share';
 
 class App extends Component {
   state = {
@@ -80,25 +81,25 @@ class App extends Component {
 
     return (
       <div>
-        <Col sm={8} md={12} smoffset={2} mdoffset={1}>
-          {/* <PokeList listOfPokemon={this.state.pokemon} /> */}
-        </Col>
+        {/* The url passed in will be the url you want to share on social media */}
+        <FacebookShareButton url={window.location.href} size={32}>
+          <FacebookIcon />
+        </FacebookShareButton>
         <Switch>
-          <Route exact path='/'>
-            <Col sm={8} md={12} smoffset={2} mdoffset={1}>
-              <PokeList listOfPokemon={this.state.pokemon} />
-            </Col>
-          </Route>
-          <Route exact path='/pokemon/:id' component={props => <PokeDetails {...props} pokemon={this.state.pokemon} />} />
+          {["/", "/pokemon"].map(path => (
+            <Route
+              key={path}
+              path={path}
+              render={(props) => (
+                <div>
+                  <PokeList {...props} listOfPokemon={this.state.pokemon} />
+                </div>
+              )}
+            />
+          ))}       
         </Switch>
-        <Col sm={12}>
-          {this.pagination()}
-        </Col>
       </div>
     );
   }
 }
-
-// sm = { 8} md = { 10} smOffset = { 2} mdOffset = { 1}
-//  <Pagination.Item>{1}</Pagination.Item>
 export default App;
