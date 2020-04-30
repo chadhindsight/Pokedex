@@ -1,14 +1,30 @@
- *{
-    text-transform: capitalize;
+ body{
+    /* text-transform: capitalize; */
+    background-color: #2c3e50;
  }
 
  h2 {
    margin-top: -75%;
    margin-left: 55%;
+   color: whitesmoke;
  }
 
  /* TARGET LIST INDIVIDUAL POKEMON IN LIST */
- .PokeList-item:hover {
-   color: #0984e3;
-   cursor: pointer;
+ .PokeList-item {
+   text-transform: capitalize;
  }
+ .PokeList-item:hover {
+    cursor: pointer;
+   background-color: #3498db;
+   color: blanchedalmond;
+   font-weight: bolder;
+ }
+/* Remove underline from pokemon links */
+ a:hover {
+   text-decoration: none;
+ }
+ /* Poke-details list secion*/
+ .poke-details{
+   color: aliceblue;
+ }
+
