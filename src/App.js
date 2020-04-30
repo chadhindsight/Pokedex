@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
+import logo from './logo.svg';
 import PokeList from './components/PokeList';
+import Socials from './components/Socials'
 import Pagination from 'react-bootstrap/Pagination'
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch} from 'react-router-dom';
 
 class App extends Component {
   state = {
@@ -29,13 +31,13 @@ class App extends Component {
       console.log(this.state.totalPages)
       // console.log(this.state.pokemon)
     }
-    //Error Handling if the request fails
+    //If the request fails it gets handled here
     catch (err) {
       console.log(`A ${err} was returned. Something is off :(`);
     }
 
   }
-  // Load the initial set of pokemon once component renders
+  // Load the initial set of pokemon once the component renders
   componentDidMount() {
     this.loadPokemon(this.props.baseURL)
   }
@@ -78,23 +80,22 @@ class App extends Component {
 
     return (
       <div>
-        {/* The url passed in will be the url you want to share on social media */}
-        <FacebookShareButton url={window.location.href} size={32}>
-          <FacebookIcon />
-        </FacebookShareButton>
+        <div className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h2>Your Pokedex</h2>
+        </div>
         <Switch>
           {["/", "/pokemon"].map(path => (
             <Route
               key={path}
               path={path}
               render={(props) => (
-                <div>
                   <PokeList {...props} listOfPokemon={this.state.pokemon} />
-                </div>
               )}
             />
           ))}       
         </Switch>
+        <Socials />
       </div>
     );
   }

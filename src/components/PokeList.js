@@ -1,23 +1,37 @@
 import React from 'react';
-import { ListGroup, ListGroupItem, Col } from 'react-bootstrap';
+import { MDBListGroup, MDBListGroupItem, MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import { Link } from 'react-router-dom';
-
+import {Switch, Route} from 'react-router-dom';
+import PokeDetails from './PokeDetails'
 const PokeList = ({ listOfPokemon }) => {
 
     let pokemon = listOfPokemon.map((monster) => {
         // console.log(monster.name)
         return (
-            <Col sm={6} md={4} key={monster.name}>
-                <Link to={`/pokemon/${monster.name}`}><ListGroupItem className='PokeList-item'>{monster.name}</ListGroupItem></Link>
-            </Col>
+                <Link to={`/pokemon/${monster.name}`} 
+                key={monster.name}><MDBListGroupItem className='PokeList-item'>{monster.name}</MDBListGroupItem>
+                </Link>
         )
     });
 
     return (
-        <ListGroup>
+        
+        <MDBContainer>
+            <MDBRow>
+                <MDBCol size="5">
+        <MDBListGroup>
             {pokemon}
-        </ListGroup>
+        </MDBListGroup>
+                </MDBCol>
+        <Switch> 
+                <MDBCol size="7">
+    <Route exact path='/pokemon/:id' component={props => <PokeDetails {...props} pokemon={listOfPokemon}/> }/>
+                </MDBCol>
+        </Switch>
+            </MDBRow>
+        </MDBContainer>
     )
 }
 
 export default PokeList;
+
