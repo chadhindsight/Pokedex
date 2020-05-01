@@ -3,10 +3,9 @@ import axios from 'axios';
 import './App.css';
 import logo from './logo.svg';
 import PokeList from './components/PokeList';
-import PokeBattle from './components/PokeBattle'
-import PokeDetails from './components/PokeDetails'
-import Socials from './components/Socials'
-import Pagination from 'react-bootstrap/Pagination'
+import PokeBattle from './components/PokeBattle';
+import Socials from './components/Socials';
+import Pagination from 'react-bootstrap/Pagination';
 import { Route, Switch} from 'react-router-dom';
 
 class App extends Component {
