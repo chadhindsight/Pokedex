@@ -54,9 +54,10 @@ class PokeDetails extends Component {
     }
 
     render() {
-        console.log(this.state)
+        console.log(this.props)
         return (
             <div>
+                jkjoojo
                 {this.displayDetails()}
             </div>
         );

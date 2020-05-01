@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import logo from './logo.svg';
 import PokeList from './components/PokeList';
+import PokeBattle from './components/PokeBattle'
 import Socials from './components/Socials'
 import Pagination from 'react-bootstrap/Pagination'
 import { Route, Switch} from 'react-router-dom';
@@ -93,7 +94,8 @@ class App extends Component {
                   <PokeList {...props} listOfPokemon={this.state.pokemon} />
               )}
             />
-          ))}       
+          ))}
+          <Route exact path="/battle" component={props => <PokeBattle />} />
         </Switch>
         <Socials />
       </div>
