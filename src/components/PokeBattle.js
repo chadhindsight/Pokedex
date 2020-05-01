@@ -1,34 +1,67 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Opponent from './Opponent'
 import Player from './Player'
 
-const PokeBattle = (props) => {
-    let blastHp = props.blastHp;
-    let playerHp = props.playerHp;
-    // Maybe have a hit rate function that you can call inside of each individual action function
+class PokeBattle extends Component {
+    state = {
+        blastHP: 105,
+        charHP: 100
+    }
 
-    console.log(props)
-    return (
-        <div>
-            <div className="game">
-                <Opponent />
-               <Player />
-            </div>
-            <div className="box">
-                <div id="message" className="message">
-                    What should Blastoise do?
+    // Make hit rate function that you can call inside of each individual action function
+
+
+   attack = (e) => {
+       let damage
+       switch (e) {
+           case e.target.innerText === 'Water Cannon':
+               damage = 25
+               break
+           case e.target.innerText === 'Water Pulse':
+               damage = 33
+               break
+           case e.target.innerText === 'Surf':
+               damage = 45
+               break
+           case e.target.innerText === 'Tackle':
+               damage = 12
+               break
+            default:
+            damage = 0    
+                break   
+       }
+
+       this.setState({
+           charHP: this.state.charHP - damage
+       })
+      
+    }
+
+    render () {
+        return (
+            <div>
+                <div className="game">
+                    <Opponent hp={this.state.charHP} />
+                    <Player hp={this.state.blastHP} />
                 </div>
-                <div className="actions">
-                    <button>Water Cannon</button>
-                    <button>Water Pulse</button>
-                    <button>Surf</button>
-                    <button>Tackle</button>
+                <div className="box">
+                    <div id="message" className="message">
+                        What should Blastoise do?
+                    </div>
+                    <div className="actions">
+                        <button onClick={this.attack}>Water Cannon</button>
+                        <button onClick={this.attack}>Water Pulse</button>
+                        <button onClick={this.attack}>Surf</button>
+                        <button onClick={this.attack}>Tackle</button>
+                    </div>
+                    <div className="continue">
+                        {/* On click button to continue */}
+                        <button>Continue</button>
+                    </div>
                 </div>
-                <div className="continue">
-                    <button onclick="compPokemon()">Continue</button>
-                </div>
-            </div>
-        </div>
-    );
+            </div >
+        );
+    }
+       
 }
 export default PokeBattle;
