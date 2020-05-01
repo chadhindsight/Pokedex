@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Opponent = () => {
+const Opponent = (props) => {
     return (
         <div className="opponent">
             <div className="stats">
@@ -8,7 +8,7 @@ const Opponent = () => {
                     <div className="pokeballs">
                         <div className="pokeball"></div>
                     </div>
-                    <div id="apHP" className="hp-count">100</div>
+                    <div id="apHP" className="hp-count">{props.hp}</div>
                 </div>
                 <span className="name">
                     <h2>Charizard</h2>
