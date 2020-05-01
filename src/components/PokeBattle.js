@@ -3,6 +3,10 @@ import Opponent from './Opponent'
 import Player from './Player'
 
 const PokeBattle = (props) => {
+    let blastHp = props.blastHp;
+    let playerHp = props.playerHp;
+    // Maybe have a hit rate function that you can call inside of each individual action function
+
     console.log(props)
     return (
         <div>
@@ -13,12 +17,12 @@ const PokeBattle = (props) => {
             <div className="box">
                 <div id="message" className="message">
                     What should Blastoise do?
-            </div>
+                </div>
                 <div className="actions">
-                    <button onClick={}>Water Cannon</button>
-                    <button onClick={}>Water Pulse</button>
-                    <button onClick={}>Surf</button>
-                    <button onClick={}>Tackle</button>
+                    <button>Water Cannon</button>
+                    <button>Water Pulse</button>
+                    <button>Surf</button>
+                    <button>Tackle</button>
                 </div>
                 <div className="continue">
                     <button onclick="compPokemon()">Continue</button>
