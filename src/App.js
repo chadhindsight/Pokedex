@@ -89,15 +89,13 @@ class App extends Component {
           <h2>Your Pokedex</h2>
         </div>
         <Switch>
-          {["/", "/pokemon"].map(path => (
+         
             <Route
-              key={path}
-              path={path}
+              exact path={'/pokemon'}
               render={(props) => (
                   <PokeList {...props} listOfPokemon={this.state.pokemon} />
               )}
             />
-          ))}
           {/* Battle component takes the parts of state that it needs instead of the whole thing */}
           <Route  path="/battle" render={props => <PokeBattle {...props} blastHP={this.state.blastHP} charHP={this.state.charHP} />}/>
         </Switch>
