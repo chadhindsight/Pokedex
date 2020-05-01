@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 class PokeDetails extends Component {
-    // Maybe refactor to not use state?
     state = {
         pokemonName: '',
         type: '',
@@ -19,7 +18,6 @@ class PokeDetails extends Component {
         let specificPokemon = this.props.pokemon.find(pokemon => {
             return pokemon.name === pokemonId
         })
-
         // Use that same url to make a request and use data from the response
         let response = await axios.get(`${specificPokemon.url}`)
         let moves = response.data.moves.slice(0, 3).map(item => item.move.name)
@@ -51,13 +49,18 @@ class PokeDetails extends Component {
     // Call it in componentDidMount()
     componentDidMount() {
         this.getDetails()
+        console.log('Pokedetails Mount')
+    }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.match.params.id !== this.props.match.params.id) 
+            this.getDetails();
     }
 
     render() {
-        console.log(this.props)
+        console.log('PokeDetails render')
         return (
             <div>
-                jkjoojo
                 {this.displayDetails()}
             </div>
         );

@@ -7,7 +7,7 @@ import PokeDetails from './PokeDetails'
 const PokeList = ({ listOfPokemon }) => {
 
     let pokemon = listOfPokemon.map((monster) => {
-        // console.log(monster.name)
+        console.log(monster.name)
         return (
             <Link to={`/pokemon/${monster.name}`}
                 key={monster.name}><MDBListGroupItem className='PokeList-item'>{monster.name}</MDBListGroupItem>
@@ -25,7 +25,7 @@ const PokeList = ({ listOfPokemon }) => {
                 </MDBCol>
                 <Switch>
                     <MDBCol size="7">
-                        <Route exact path='pokemon/:id' render={props => <PokeDetails {...props} pokemon={listOfPokemon} />} />
+                        <Route exact path='/pokemon/:id' render={props => <PokeDetails {...props} pokemon={listOfPokemon} />} />
                     </MDBCol>
                 </Switch>
             </MDBRow>

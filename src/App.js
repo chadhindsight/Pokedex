@@ -15,7 +15,9 @@ class App extends Component {
     limit: 40,
     // Every time we change page, we need to update the offset. Might remove this later
     offset: 0,
-    totalPages: 0
+    totalPages: 0,
+    blastHP: 100,
+    charHP: 100,
   }
 
   // Making a func this way sets the 'this' context so you dont need to use a bind method
@@ -81,6 +83,7 @@ class App extends Component {
 
     return (
       <div>
+        <PokeBattle  blastHP={this.state.blastHP} charHP={this.state.charHP} />
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Your Pokedex</h2>
@@ -95,7 +98,7 @@ class App extends Component {
               )}
             />
           ))}
-          <Route exact path="/battle" render={props => <PokeBattle />} />
+          {/* <Route  path="/battle" render={props => <PokeBattle {...props} blastHP={this.state.blastHP} charHP={this.state.charHP} />}/> */}
         </Switch>
         <Socials />
       </div>
