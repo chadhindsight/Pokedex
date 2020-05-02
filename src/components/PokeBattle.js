@@ -10,32 +10,39 @@ class PokeBattle extends Component {
         dynamicMessage: ''
     }
 
-    //Calculate the hit rate 
-    hitRate = () =>{
+    // Function that calculate if move misses 
+    missRate = () =>{
         let miss = Math.ceil((Math.random() * 10))
+        console.log(miss)
         return  miss === 1 || miss === 5 ? true : false
     }
-    // Calculate damage
+    // Function that calculates damage 
     attack = (e) => {
-        let rate = this.hitRate()
+        let rate = this.missRate()
         // This prevents react from setting the event to a null value... I think
         e.persist()
         console.log(rate)
         let damage        
-        if (rate === false) {
+        if (rate === true) {
             this.setState({
                 playerTurn: false,
                 dynamicMessage: 'Attack missed!',
                 charHP: this.state.charHP
             })
+            console.log(this.state.charHP)
+            return this.state.charHP
         }
 
         else {
-            if (e.target.innerText === 'Water Cannon') damage = 20
-            else if (e.target.innerText === 'Water Pulse') damage = 38
-            else if (e.target.innerText === 'Surf') damage = 25
-            else if (e.target.innerText === 'Tackle') damage = 12
-            console.log(this.state.charHP)
+           if(this.state.charHP > 0) {
+               if (e.target.innerText === 'Water Cannon') damage = 20
+               else if (e.target.innerText === 'Water Pulse') damage = 38
+               else if (e.target.innerText === 'Surf') damage = 25
+               else if (e.target.innerText === 'Tackle') damage = 12
+           }
+           else {
+               this.state.blastHP <= 0 ? alert('Battle has concluded. You lost') : alert('Battle has concluded. You Won!')
+           }
             //      else {
             //     alert('Game Over! Play again?')
             //  }
