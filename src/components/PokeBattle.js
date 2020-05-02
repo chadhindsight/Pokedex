@@ -12,6 +12,8 @@ class PokeBattle extends Component {
 
     //Calculate hit rate and damage
    attack = (e) => {
+       e.persist()
+
        let damage
        let miss = Math.ceil((Math.random() * 10))
        if (miss === 10 || miss === 3) {
@@ -22,7 +24,6 @@ class PokeBattle extends Component {
        }
 
        else{
-
          if (e.target.innerText === 'Water Cannon') damage = 20 
          else if (e.target.innerText === 'Water Pulse') damage = 38 
          else if (e.target.innerText === 'Surf') damage = 25  
@@ -32,7 +33,6 @@ class PokeBattle extends Component {
     //     alert('Game Over! Play again?')
     //  }
     }
-       this.myRef = React.createRef(); 
     //    switch (e) {
     //        case e.target.innerText === 'Water Cannon':
     //            damage = 25
@@ -50,16 +50,21 @@ class PokeBattle extends Component {
     //         damage = 0    
     //             break   
     //    }
-    e.target.setAttribute("disabled", "true")
+    //    After Button is clicked disable then enable it again
+           e.target.setAttribute("disabled", "true")
+        setTimeout(() => {
+            e.target.removeAttribute("disabled")
+        }, 2000);
+
        this.setState({
            charHP: this.state.charHP - damage,
        })
+   
     //   return damage
     }
     // OPPONENT"S TURN
-    opponent = ()=> {
-        this.myRef.setAttribute("disabled", "disabled");
-    }
+    // opponent = ()=> {
+    // }
     render () {
         return (
             <div>
