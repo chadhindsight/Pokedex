@@ -38,13 +38,20 @@ class PokeBattle extends Component {
                     blastHP: this.state.blastHP - flamethrower,
                     dynamicMessage: `Charizard used flamethrower!`
                 })
+                setTimeout(() => {
+                    this.setState({ dynamicMessage: 'What should Blastoise do?'})
+                }, 2000);
             }
+
             else if (amount === 2) {
                 this.setState({
                     playerTurn: true,
                     blastHP: this.state.blastHP - dragonClaw,
                     dynamicMessage: 'Charizard used dragonClaw!'
                 })
+                setTimeout(() => {
+                    this.setState({ dynamicMessage: 'What should Blastoise do?' })
+                }, 2000);
             }
             else {
                 this.setState({
@@ -52,6 +59,9 @@ class PokeBattle extends Component {
                     blastHP: this.state.blastHP - scratch,
                     dynamicMessage: 'Charizard scratched yo ass!'
                 })
+                setTimeout(() => {
+                    this.setState({ dynamicMessage: 'What should Blastoise do?' })
+                }, 2000);
             }
         }
     }
@@ -107,7 +117,7 @@ class PokeBattle extends Component {
             setTimeout(() => {
                 e.target.removeAttribute("disabled")
                 this.opponentAttack()
-            }, 2000);
+            }, 3000);
             this.setState({
                 charHP: this.state.charHP - damage,
                 dynamicMessage: `Blastoise's attack was successful!`
