@@ -7,7 +7,7 @@ class PokeBattle extends Component {
         blastHP: 105,
         charHP: 100,
         playerTurn: true,
-        dynamicMessage: ''
+        dynamicMessage: 'What should Blastoise do?'
     }
 
     // Function that calculate if move misses 
@@ -16,12 +16,43 @@ class PokeBattle extends Component {
         console.log(miss)
         return miss === 1 || miss === 5 ? true : false
     }
-    // Function that calculates damage 
+    // OPPONENT"S TURN
+    opponentAttack = () => {
+        let rate = this.missRate()
+
+        if (rate === true) {
+            this.setState({
+                playerTurn: true,
+                dynamicMessage: 'Attack missed!',
+                charHP: this.state.charHP
+            })
+        }
+        else {
+            const flamethrower = 25;
+            const dragonClaw = 18;
+            // Determine which attack enemy will use
+            let amount = Math.ceil((Math.random() * 2))
+            if (amount === 1) {
+                this.setState({
+                    blastHP: this.state.blastHP - flamethrower,
+                    dynamicMessage: `Charizard used${flamethrower}`
+                })
+            }
+            else {
+                this.setState({
+                    playerTurn: true,
+                    blastHP: this.state.blastHP - dragonClaw,
+                    dynamicMessage: `Charizard used${dragonClaw}`
+                })
+            }
+        }
+    }
+    // Function that calculates damage during players turn
     attack = (e) => {
         let rate = this.missRate()
         // This prevents react from setting the event to a null value... I think
         e.persist()
-
+        if(this.state.playerTurn === true) {
         let damage
         if (rate === true) {
             this.setState({
@@ -67,38 +98,11 @@ class PokeBattle extends Component {
         e.target.setAttribute("disabled", "true")
         setTimeout(() => {
             e.target.removeAttribute("disabled")
+            this.opponentAttack()
         }, 2000);
         this.setState({
             charHP: this.state.charHP - damage,
         })
-
-    }
-    // OPPONENT"S TURN
-    opponentAttack = () => {
-        let rate = this.missRate()
-
-        if (rate === true) {
-            this.setState({
-                playerTurn: true,
-                dynamicMessage: 'Attack missed!',
-                charHP: this.state.charHP
-            })
-        }
-        else {
-            const flamethrower = 25;
-            const dragonClaw = 18;
-            // Determine which attack enemy will use
-            let amount = Math.ceil((Math.random() * 2))
-            if (amount === 1) {
-                this.setState({
-                    blastHP: this.state.blastHP - flamethrower
-                })
-            }
-            else {
-                this.setState({
-                    blastHP: this.state.blastHP - dragonClaw
-                })
-            }
         }
     }
 
@@ -112,7 +116,7 @@ class PokeBattle extends Component {
                 </div>
                 <div className="box">
                     <div id="message" className="message">
-                        What should Blastoise do?
+                        
                     </div>
                     <div className="actions">
                         <button className="a-btn" onClick={this.attack}>Water Cannon</button>
@@ -122,7 +126,6 @@ class PokeBattle extends Component {
                     </div>
                     <div className="continue">
                         {/* On click button to continue */}
-                        <button>Continue</button>
                     </div>
                 </div>
             </div >
