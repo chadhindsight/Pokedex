@@ -5,42 +5,65 @@ import Player from './Player'
 class PokeBattle extends Component {
     state = {
         blastHP: 105,
-        charHP: 100
+        charHP: 100,
+        playerTurn: true,
+        dynamicMessage: ''
     }
 
-    // Make hit rate function that you can call inside of each individual action function
-
-
+    //Calculate hit rate and damage
    attack = (e) => {
        let damage
-       switch (e) {
-           case e.target.innerText === 'Water Cannon':
-               damage = 25
-               break
-           case e.target.innerText === 'Water Pulse':
-               damage = 33
-               break
-           case e.target.innerText === 'Surf':
-               damage = 45
-               break
-           case e.target.innerText === 'Tackle':
-               damage = 12
-               break
-            default:
-            damage = 0    
-                break   
+       let miss = Math.ceil((Math.random() * 10))
+       if (miss === 10 || miss === 3) {
+           this.setState({ 
+               playerTurn: false,
+               dynamicMessage: 'Attack missed!'
+            })    
        }
 
-       this.setState({
-           charHP: this.state.charHP - damage
-       })
-      
-    }
+       else{
 
+         if (e.target.innerText === 'Water Cannon') damage = 20 
+         else if (e.target.innerText === 'Water Pulse') damage = 38 
+         else if (e.target.innerText === 'Surf') damage = 25  
+         else if (e.target.innerText === 'Tackle') damage = 12  
+
+    //      else {
+    //     alert('Game Over! Play again?')
+    //  }
+    }
+       this.myRef = React.createRef(); 
+    //    switch (e) {
+    //        case e.target.innerText === 'Water Cannon':
+    //            damage = 25
+    //            break;
+    //        case e.target.innerText === 'Water Pulse':
+    //            damage = 33
+    //            break;
+    //        case e.target.innerText === 'Surf':
+    //            damage = 45
+    //            break;
+    //        case e.target.innerText === 'Tackle':
+    //            damage = 12
+    //            break;
+    //         default:
+    //         damage = 0    
+    //             break   
+    //    }
+    e.target.setAttribute("disabled", "true")
+       this.setState({
+           charHP: this.state.charHP - damage,
+       })
+    //   return damage
+    }
+    // OPPONENT"S TURN
+    opponent = ()=> {
+        this.myRef.setAttribute("disabled", "disabled");
+    }
     render () {
         return (
             <div>
-                <div className="game">
+                <div className="game" >
                     <Opponent hp={this.state.charHP} />
                     <Player hp={this.state.blastHP} />
                 </div>
@@ -48,11 +71,11 @@ class PokeBattle extends Component {
                     <div id="message" className="message">
                         What should Blastoise do?
                     </div>
-                    <div className="actions">
-                        <button onClick={this.attack}>Water Cannon</button>
-                        <button onClick={this.attack}>Water Pulse</button>
-                        <button onClick={this.attack}>Surf</button>
-                        <button onClick={this.attack}>Tackle</button>
+                    <div  className="actions">
+                        <button ref={this.myRef} onClick={this.attack}>Water Cannon</button>
+                        <button ref={this.myRef} onClick={this.attack}>Water Pulse</button>
+                        <button ref={this.myRef} onClick={this.attack}>Surf</button>
+                        <button ref={this.myRef} onClick={this.attack}>Tackle</button>
                     </div>
                     <div className="continue">
                         {/* On click button to continue */}
