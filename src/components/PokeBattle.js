@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Opponent from './Opponent'
 import Player from './Player'
-
+import ReactAudioPlayer from 'react-audio-player';
+import { useSpring, animated } from 'react-spring';
 class PokeBattle extends Component {
     state = {
         blastHP: 105,
@@ -23,7 +24,7 @@ class PokeBattle extends Component {
         if (rate === true) {
             this.setState({
                 playerTurn: true,
-                dynamicMessage: 'Attack missed!',
+                dynamicMessage: 'The attack from Charizard missed!',
                 charHP: this.state.charHP
             })
         }
@@ -67,6 +68,7 @@ class PokeBattle extends Component {
     }
     // Function that calculates damage during players turn
     attack = (e) => {
+    
         let rate = this.missRate()
         // This prevents react from setting the event to a null value... I think
         e.persist()
@@ -74,13 +76,13 @@ class PokeBattle extends Component {
             let damage
             if (rate === true) {
                 this.setState({
+                    dynamicMessage: 'Your attacked missed!',
                     playerTurn: false,
-                    dynamicMessage: 'Attack missed!',
                     charHP: this.state.charHP
                 })
                 console.log(this.state.charHP)
-                return this.state.charHP
             }
+
             else {
                 if (this.state.charHP > 0) {
                     if (e.target.innerText === 'Water Cannon') damage = 20
@@ -147,6 +149,11 @@ class PokeBattle extends Component {
                         {/* On click button to continue */}
                     </div>
                 </div>
+                <ReactAudioPlayer
+                    src="../battle.mp3"
+                    autoPlay
+                    controls
+                />
             </div >
         );
     }
