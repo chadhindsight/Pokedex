@@ -21,7 +21,7 @@ class Main extends Component {
     render() {
         return (
             <div>
-                <PokeWall posts ={}/>
+                <PokeWall posts ={posts}/>
             </div>
         );
     }
