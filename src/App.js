@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import logo from './logo.svg';
 import PokeList from './components/PokeList';
+import Main from './components/pokeWall/Main';
 import PokeBattle from './components/PokeBattle';
 import Socials from './components/Socials';
 import Pagination from 'react-bootstrap/Pagination';
@@ -16,8 +17,6 @@ class App extends Component {
     // Every time we change page, we need to update the offset. Might remove this later
     offset: 0,
     totalPages: 0,
-    blastHP: 100,
-    charHP: 100,
   }
 
   // Making a func this way sets the 'this' context so you dont need to use a bind method
@@ -83,11 +82,12 @@ class App extends Component {
 
     return (
       <div>
-        {/* <PokeBattle blastHP={this.state.blastHP} charHP={this.state.charHP} /> */}
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Your Pokedex</h2>
+          <h2>Pokemon Hub</h2>
         </div>
+        <Main />
+        
         <Switch>
             <Route
               path='/pokemon/'
@@ -103,4 +103,5 @@ class App extends Component {
     );
   }
 }
+
 export default App;

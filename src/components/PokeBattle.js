@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Opponent from './Opponent'
 import Player from './Player'
 import ReactAudioPlayer from 'react-audio-player';
-import { useSpring, animated } from 'react-spring';
+
 class PokeBattle extends Component {
     state = {
         blastHP: 105,
@@ -11,13 +11,13 @@ class PokeBattle extends Component {
         dynamicMessage: 'What should Blastoise do?'
     }
 
-    // Function that calculate if move misses 
+    // Function that calculate if a move misses 
     missRate = (message) => {
         let miss = Math.ceil((Math.random() * 10))
         console.log(miss)
         return miss === 1 || miss === 5 ? true : false
     }
-    // OPPONENT"S TURN
+    // OPPONENT'S TURN
     opponentAttack = () => {
         let rate = this.missRate()
 
@@ -91,11 +91,10 @@ class PokeBattle extends Component {
                     else if (e.target.innerText === 'Tackle') damage = 12
                 }
                 else {
+                   
                     this.state.blastHP <= 0 ? alert('Battle has concluded. You lost') : alert('Battle has concluded. You Won!')
+                    
                 }
-                //      else {
-                //     alert('Game Over! Play again?')
-                //  }
             }
             //    switch (e) {
             //        case e.target.innerText === 'Water Cannon':
