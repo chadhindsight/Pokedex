@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PokeWall from './PokeWall';
+import './PokeWall.css'
 
 const posts = [{
     id: "0",
