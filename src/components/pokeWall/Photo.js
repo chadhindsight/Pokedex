@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Photo = (props) => {
-    console.log(props.post.description)
+    const post = props.post
 
     return (
         <div>
@@ -9,7 +9,8 @@ const Photo = (props) => {
                 <img className='photo' src={props.post.imageLink} alt="pokemon goes here" />
                 <figcaption> <p>{props.post.description}</p> </figcaption>
                 <div className="button-container">
-                    <button className="remove-button" onClick={props.removePhoto(props.post)}>Remove</button>
+                    {/* pass to a callback inside onClick */}
+                    <button className="remove-button" onClick={()=> props.removePhoto(post)}>Remove</button>
                 </div>
             </figure>
         </div>
