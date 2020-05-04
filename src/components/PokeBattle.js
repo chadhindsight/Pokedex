@@ -10,31 +10,114 @@ class PokeBattle extends Component {
         playerTurn: true,
         dynamicMessage: 'What should Blastoise do?'
     }
-
-    //Method that calculates if a move misses 
-    missRate = (message) => {
-        let miss = Math.ceil((Math.random() * 10))
-        console.log(miss)
-        return miss === 1 || miss === 5 ? true : false
+    componentDidUpdate = (prevProps,prevState) => {
+        console.log(prevState)
     }
-    // OPPONENT'S TURN
-    opponentAttack = () => {
-        let rate = this.missRate()
 
-        if (rate === true) {
-            this.setState({
-                playerTurn: true,
-                dynamicMessage: 'The attack from Charizard missed!',
-                charHP: this.state.charHP
-            })
+    game =  (e) => {
+        console.log(this.state.charHP)
+        
+
+        let opponentHP = this.state.charHP
+        let playerDamage = 0
+        let message = `Blastoise's missed!`
+
+        let missed = this.missRate()
+
+        if (missed === false ) {
+            playerDamage = this.playerAttack2(e)
+            opponentHP -= playerDamage 
+            message = `Blastoise's attack was successful!`
+            if(opponentHP < 0) opponentHP = 0
         }
-        else {
+
+        
+
+        setTimeout(this.opponentAttack2, 2000)
+
+        this.setState({
+            charHP: opponentHP,
+            dynamicMessage: message,
+            playerTurn: false
+        })
+    }
+
+    opponentAttack2 = () => {
+        if(this.state.charHP <= 0) {
+            alert("You won!")
+        }
+
+        let missed = this.missRate()
+
+        setTimeout(() => {
+            if (this.state.blastHP <= 0) {
+                alert("You lost!")
+            }
+        }, 2000);
+
+        if(missed === false ) {
             const flamethrower = 25;
             const dragonClaw = 18;
             const scratch = 13
             // Determine which attack the enemy will use
-            let amount = Math.ceil((Math.random() * 3))
-            if (amount === 1) {
+            let enemyMove = Math.ceil((Math.random() * 3))
+            if (enemyMove === 1) {
+                this.setState({
+                    playerTurn: true,
+                    blastHP: this.state.blastHP - flamethrower,
+                    dynamicMessage: `Charizard used flamethrower!`
+                })
+            }
+            else if (enemyMove === 2) {
+                this.setState({
+                    playerTurn: true,
+                    blastHP: this.state.blastHP - dragonClaw,
+                    dynamicMessage: 'Charizard used dragonClaw!'
+                })
+            }
+            else {
+                this.setState({
+                    playerTurn: true,
+                    blastHP: this.state.blastHP - scratch,
+                    dynamicMessage: 'Charizard scratched yo ass!'
+                })
+            }
+        }
+        else {
+            this.setState({
+                playerTurn: true,
+                dynamicMessage: 'Charizard missed!'
+            })
+        }
+    }
+
+    playerAttack2 = (e) => {
+        let damage = 0
+
+        if (e.target.innerText === 'Water Cannon') damage = 20
+        else if (e.target.innerText === 'Water Pulse') damage = 38
+        else if (e.target.innerText === 'Surf') damage = 25
+        else if (e.target.innerText === 'Tackle') damage = 12
+
+        return damage
+    }
+
+    //Determine if a move misses 
+    missRate = () => {
+        let miss = Math.ceil((Math.random() * 10))
+
+        return miss === 1 || miss === 5 ? true : false
+    }
+
+    // OPPONENT'S TURN
+    opponentAttack = () => {
+
+            const flamethrower = 25;
+            const dragonClaw = 18;
+            const scratch = 13
+            // Determine which attack the enemy will use
+            let enemyMove = Math.ceil((Math.random() * 3))
+            if (enemyMove === 1) {
                 this.setState({
                     blastHP: this.state.blastHP - flamethrower,
                     dynamicMessage: `Charizard used flamethrower!`
@@ -43,8 +126,7 @@ class PokeBattle extends Component {
                     this.setState({ dynamicMessage: 'What should Blastoise do?'})
                 }, 2000);
             }
-
-            else if (amount === 2) {
+            else if (enemyMove === 2) {
                 this.setState({
                     playerTurn: true,
                     blastHP: this.state.blastHP - dragonClaw,
@@ -65,37 +147,22 @@ class PokeBattle extends Component {
                 }, 2000);
             }
         }
-    }
-    // Function that calculates damage during players turn
-    attack = (e) => {
     
-        let rate = this.missRate()
-        // This prevents react from setting the event to a null value... I think
-        e.persist()
-        if (this.state.playerTurn === true) {
-            let damage
-            if (rate === true) {
-                this.setState({
-                    dynamicMessage: 'Your attacked missed!',
-                    playerTurn: false,
-                    charHP: this.state.charHP
-                })
-                console.log(this.state.charHP)
-            }
+    // No longer directly on the Function that calculates damage during players turn
+    playerAttack = (e) => {
+        let damage = 0
+        let hp = this.state.charHP
 
-            else {
-                if (this.state.charHP > 0) {
+        // This prevents react from setting the event to a null value... I think
+        //e.persist()
+       
+
                     if (e.target.innerText === 'Water Cannon') damage = 20
                     else if (e.target.innerText === 'Water Pulse') damage = 38
                     else if (e.target.innerText === 'Surf') damage = 25
                     else if (e.target.innerText === 'Tackle') damage = 12
-                }
-                else {
-                   
-                    this.state.blastHP <= 0 ? alert('Battle has concluded. You lost') : alert('Battle has concluded. You Won!')
-                    
-                }
-            }
+                    hp = Number(this.state.charHP - damage)
+                
             //    switch (e) {
             //        case e.target.innerText === 'Water Cannon':
             //            damage = 25
@@ -115,16 +182,20 @@ class PokeBattle extends Component {
             //    }
             //    After Button is clicked disable all buttons and then enable them again
             e.target.setAttribute("disabled", "true")
-            setTimeout(() => {
-                e.target.removeAttribute("disabled")
-                this.opponentAttack()
-            }, 3000);
+            // setTimeout(() => {
+            //     e.target.removeAttribute("disabled")
+            // }, 3000);
+
+            console.log(this.state.charHP, typeof this.state.charHP, damage)
+            // let hp = Number(this.state.charHP - damage)
+            if (hp < 0 ) hp = 0  
             this.setState({
-                charHP: this.state.charHP - damage,
-                dynamicMessage: `Blastoise's attack was successful!`
+                charHP: hp,
+                dynamicMessage: `Blastoise's attack was successful!`,
+                playerTurn: false
             })
         }
-    }
+
 
 
     render() {
@@ -138,19 +209,26 @@ class PokeBattle extends Component {
                     <div id="message" className="message">
                         {this.state.dynamicMessage}
                     </div>
+                    {this.state.playerTurn === true ?
                     <div className="actions">
-                        <button className="a-btn" onClick={this.attack}>Water Cannon</button>
-                        <button className="a-btn" onClick={this.attack}>Water Pulse</button>
-                        <button className="a-btn" onClick={this.attack}>Surf</button>
-                        <button className="a-btn" onClick={this.attack}>Tackle</button>
-                    </div>
+                        <button className="a-btn" onClick={this.game}>Water Cannon</button>
+                        <button className="a-btn" onClick={this.game}>Water Pulse</button>
+                        <button className="a-btn" onClick={this.game}>Surf</button>
+                        <button className="a-btn" onClick={this.game}>Tackle</button>
+                    </div> :
+                        <div className="actions">
+                            <button className="a-btn" disabled onClick={this.game}>Water Cannon</button>
+                            <button className="a-btn" disabled onClick={this.game}>Water Pulse</button>
+                            <button className="a-btn" disabled onClick={this.game}>Surf</button>
+                            <button className="a-btn" disabled onClick={this.game}>Tackle</button>
+                        </div>
+                    }
                     <div className="continue">
                         {/* On click button to continue */}
                     </div>
                 </div>
                 <ReactAudioPlayer
                     src="../battle.mp3"
-                    autoPlay
                     controls
                 />
             </div >

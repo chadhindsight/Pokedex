@@ -21,12 +21,15 @@ state = {
         imageLink: "https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2017/08/24/104670887-VacationExplainsTHUMBWEB.1910x1000.jpg"
     }]
 }
-
+//Method to delete a photo with a specific id
+removePhoto(postRemoved) {
+    console.log(postRemoved.description)
+}
     render() {
         console.log(this.state.posts)
         return (
             <div>
-                <PokeWall posts ={this.state.posts}/>
+                <PokeWall posts ={this.state.posts} removePhoto={this.removePhoto}/>
             </div>
         );
     }
