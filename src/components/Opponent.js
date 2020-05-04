@@ -14,7 +14,7 @@ const Opponent = (props) => {
                     <h2>Charizard</h2>
                 </span>
             </div>
-            <img className="pokemon" src="http://img.pokemondb.net/sprites/black-white/anim/normal/charizard.gif" alt="A sprite of charizard" />
+            <img className={props.isHit? 'pokemon hit': 'pokemon'} src="http://img.pokemondb.net/sprites/black-white/anim/normal/charizard.gif" alt="A sprite of charizard" />
         </div>
     );
 };

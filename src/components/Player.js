@@ -14,7 +14,7 @@ const Player = (props) => {
                     <h2>Blastoise</h2>
                 </span>
             </div>
-            <img className="pokemon" src="http://bit.ly/blastoisegif" alt="A gif from blastoises back sprite" />
+            <img className={props.isHit? 'pokemon hit': 'pokemon'} src="http://bit.ly/blastoisegif" alt="A gif from blastoises back sprite" />
         </div>
     );
 };

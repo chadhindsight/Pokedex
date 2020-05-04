@@ -2,7 +2,7 @@ import React from 'react';
 import { MDBListGroup, MDBListGroupItem, MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import { Link } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
-import PokeDetails from './PokeDetails'
+import PokeDetails from './PokeDetails';
 
 const PokeList = ({ listOfPokemon }) => {
 

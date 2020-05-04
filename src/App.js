@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import logo from './logo.svg';
+import Home from './components/Home';
 import PokeList from './components/PokeList';
+import PokeWall from './components/pokeWall/PokeWall'
+import AddPhotos from './components/pokeWall/AddPhotos';
 import Main from './components/pokeWall/Main';
 import PokeBattle from './components/PokeBattle';
 import Socials from './components/Socials';
 import Pagination from 'react-bootstrap/Pagination';
-import { Route, Switch} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 class App extends Component {
   state = {
@@ -17,6 +20,8 @@ class App extends Component {
     // Every time we change page, we need to update the offset. Might remove this later
     offset: 0,
     totalPages: 0,
+      posts: []
+    
   }
 
   // Making a func this way sets the 'this' context so you dont need to use a bind method
@@ -39,9 +44,22 @@ class App extends Component {
     }
 
   }
+  getPhotos = async (url) => {
+    try {
+      let photos = await axios.get('https://ironrest.herokuapp.com/ pokemon');
+      this.setState({
+        posts: photos.data
+      })
+    }
+
+    catch(err) {
+      console.log('Damn!')
+    }
+  }
   // Load the initial set of pokemon once the component renders
   componentDidMount() {
     this.loadPokemon(this.props.baseURL)
+    this.getPhotos()
   }
 
 
@@ -76,6 +94,19 @@ class App extends Component {
       </div>
     )
   };
+  removePhoto = (postRemoved) => {
+    console.log(postRemoved.description)
+
+    this.setState({
+      posts: this.state.posts.filter(p => p !== postRemoved)
+    })
+  }
+  // Add the post the user submitted to posts array
+  addPhoto = (postSubmitted) => {
+    this.setState({
+      posts: this.state.posts.concat([postSubmitted])
+    })
+  }
 
   render() {
     if (this.state.pokemon.length === 0) { return '...loading' }
@@ -86,13 +117,15 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Pokemon Hub</h2>
         </div>
-        
-        
+
+
         <Switch>
-          <Route exact path="/pokewall" render={props => <Main {...props} />} />
-            <Route  path='/pokemon/' render={props => (<PokeList {...props} listOfPokemon={this.state.pokemon} />)}/>
+  
+          <Route path='/pokemon/' render={props => (<PokeList {...props} listOfPokemon={this.state.pokemon} />)} />
           {/* Battle component takes the parts of state thatit needs instead of the whole thing */}
-          <Route  path="/battle" render={props => <PokeBattle {...props} blastHP={this.state.blastHP} charHP={this.state.charHP} />}/>
+          <Route exact path="/battle" render={props => <PokeBattle {...props} blastHP={this.state.blastHP} charHP={this.state.charHP} />} />
+          <Route path="/pokewall" render={props => <PokeWall {...props} posts={this.state.posts} removePhoto={this.removePhoto} />} />
+          <Route exact path="/addphotos" render={props => <AddPhotos {...props} posts={this.state.posts} addPhoto={this.addPhoto} />} />
         </Switch>
         <Socials />
       </div>

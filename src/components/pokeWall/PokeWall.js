@@ -1,5 +1,6 @@
 import React from 'react';
 import Photo from './Photo';
+import PropTypes from 'prop-types';
 
 const PokeWall = (props) => {
     return (
@@ -8,5 +9,10 @@ const PokeWall = (props) => {
         </div>
     );
 };
+
+//Make sure the correct type of props are being passed
+PokeWall.propTypes = {
+    removePhoto: PropTypes.func.isRequired
+}
 
 export default PokeWall;

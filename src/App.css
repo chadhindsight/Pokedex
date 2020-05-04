@@ -211,3 +211,24 @@ h1 {
 .stats .level:before {
   content: "LVL"
 }
+
+/* HIT ANIMATION */
+.hit {
+  animation: hit 2s;
+
+}
+.opponent, .player {
+  margin-left: 0;
+  filter: invert(0);
+}
+
+@keyframes hit{
+  25% {
+    margin-left: -5;
+    filter: invert(1)
+  }
+   75% {
+    margin-left: 5;
+    filter: invert(0.5)
+  }
+}
