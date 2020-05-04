@@ -5,7 +5,7 @@ import ReactAudioPlayer from 'react-audio-player';
 
 class PokeBattle extends Component {
     state = {
-        blastHP: 105,
+        blastHP: 1,
         charHP: 100,
         playerTurn: true,
         dynamicMessage: 'What should Blastoise do?'
@@ -52,36 +52,27 @@ class PokeBattle extends Component {
         setTimeout(() => {
             if (this.state.blastHP <= 0) {
                 alert("You lost!")
+                this.setState({
+                    blastHP: 105,
+                    charHP: 100,
+                    dynamicMessage: 'What should Blastoise do?'
+                })
             }
         }, 2000);
 
         if(missed === false ) {
-            const flamethrower = 25;
-            const dragonClaw = 18;
-            const scratch = 13
             // Determine which attack the enemy will use
-            let enemyMove = Math.ceil((Math.random() * 3))
-            if (enemyMove === 1) {
-                this.setState({
-                    playerTurn: true,
-                    blastHP: this.state.blastHP - flamethrower,
-                    dynamicMessage: `Charizard used flamethrower!`
-                })
-            }
-            else if (enemyMove === 2) {
-                this.setState({
-                    playerTurn: true,
-                    blastHP: this.state.blastHP - dragonClaw,
-                    dynamicMessage: 'Charizard used dragonClaw!'
-                })
-            }
-            else {
-                this.setState({
-                    playerTurn: true,
-                    blastHP: this.state.blastHP - scratch,
-                    dynamicMessage: 'Charizard scratched yo ass!'
-                })
-            }
+            let attacks = ['', 'scratch','dragonClaw', 'flamethrower']
+            
+            let randomIndex = Math.ceil((Math.random() * 3))
+            let myHP = this.state.blastHP - randomIndex * 14
+            if(myHP < 0) myHP = 0; 
+            this.setState({
+                playerTurn: true,
+                blastHP: myHP,
+                dynamicMessage: `Charizard used ${attacks[randomIndex]}`
+            })
+
         }
         else {
             this.setState({
@@ -155,31 +146,30 @@ class PokeBattle extends Component {
 
         // This prevents react from setting the event to a null value... I think
         //e.persist()
-       
 
-                    if (e.target.innerText === 'Water Cannon') damage = 20
-                    else if (e.target.innerText === 'Water Pulse') damage = 38
-                    else if (e.target.innerText === 'Surf') damage = 25
-                    else if (e.target.innerText === 'Tackle') damage = 12
-                    hp = Number(this.state.charHP - damage)
+                    // if (e.target.innerText === 'Water Cannon') damage = 20
+                    // else if (e.target.innerText === 'Water Pulse') damage = 38
+                    // else if (e.target.innerText === 'Surf') damage = 25
+                    // else if (e.target.innerText === 'Tackle') damage = 12
                 
-            //    switch (e) {
-            //        case e.target.innerText === 'Water Cannon':
-            //            damage = 25
-            //            break;
-            //        case e.target.innerText === 'Water Pulse':
-            //            damage = 33
-            //            break;
-            //        case e.target.innerText === 'Surf':
-            //            damage = 45
-            //            break;
-            //        case e.target.innerText === 'Tackle':
-            //            damage = 12
-            //            break;
-            //         default:
-            //         damage = 0    
-            //             break   
-            //    }
+               switch (e) {
+                   case e.target.innerText === 'Water Cannon':
+                       damage = 25
+                       break;
+                   case e.target.innerText === 'Water Pulse':
+                       damage = 33
+                       break;
+                   case e.target.innerText === 'Surf':
+                       damage = 45
+                       break;
+                   case e.target.innerText === 'Tackle':
+                       damage = 12
+                       break;
+                    default:
+                    damage = 0    
+                        break   
+               }
+                hp = Number(this.state.charHP - damage)
             //    After Button is clicked disable all buttons and then enable them again
             e.target.setAttribute("disabled", "true")
             // setTimeout(() => {
