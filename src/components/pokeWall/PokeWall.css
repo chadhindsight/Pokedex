@@ -51,6 +51,11 @@
  margin-top: -2rem;
  max-width: none;
 }
+p {
+    color: whitesmoke;
+    font-size: larger;
+}
+
 .comment{
  width: 100%
 }

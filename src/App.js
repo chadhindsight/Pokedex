@@ -86,15 +86,11 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Pokemon Hub</h2>
         </div>
-        <Main />
+        
         
         <Switch>
-            <Route
-              path='/pokemon/'
-              render={(props) => (
-                  <PokeList {...props} listOfPokemon={this.state.pokemon} />
-              )}
-            />
+          <Route exact path="/pokewall" render={props => <Main {...props} />} />
+            <Route  path='/pokemon/' render={props => (<PokeList {...props} listOfPokemon={this.state.pokemon} />)}/>
           {/* Battle component takes the parts of state thatit needs instead of the whole thing */}
           <Route  path="/battle" render={props => <PokeBattle {...props} blastHP={this.state.blastHP} charHP={this.state.charHP} />}/>
         </Switch>
