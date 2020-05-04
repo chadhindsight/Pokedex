@@ -11,7 +11,7 @@ class PokeBattle extends Component {
         dynamicMessage: 'What should Blastoise do?'
     }
 
-    // Function that calculate if a move misses 
+    //Method that calculates if a move misses 
     missRate = (message) => {
         let miss = Math.ceil((Math.random() * 10))
         console.log(miss)
@@ -32,7 +32,7 @@ class PokeBattle extends Component {
             const flamethrower = 25;
             const dragonClaw = 18;
             const scratch = 13
-            // Determine which attack enemy will use
+            // Determine which attack the enemy will use
             let amount = Math.ceil((Math.random() * 3))
             if (amount === 1) {
                 this.setState({
