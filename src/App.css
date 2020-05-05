@@ -47,9 +47,7 @@ a{
   margin-top: -1.15%;
   padding: 0;
 }
-.social {
-   margin-right: 0 0.5rem;
-}
+
 
 a:hover {
   color: #f1c40f;
@@ -62,10 +60,24 @@ a:hover {
   text-align: justify;
   /* text-align: center; */
 }
-.intro {
 
+.intro{
+  animation: fadeAndScale .8s ease-in;
 }
- /* TARGET INDIVIDUAL POKEMON IN LIST */
+@keyframes fadeAndScale {
+  from {
+    opacity: 0;
+    transform: scale3d(.75 .59 .75);
+  }
+  to{
+    opacity: 1;
+    transform: scale3d(1,1,1)
+  }
+}
+#poke-col {
+  margin-left: -11.78%;
+}
+ /* TARGET POKEMON IN LIST */
  #PokeList-item {
    text-transform: capitalize;
    font-family: "Pokemon GB";
@@ -80,6 +92,7 @@ a:hover {
  #list-poke:hover {
    text-decoration: none;
    color: none;
+   margin-left: 0;
  }
  /* Poke-details list secion*/
  .poke-details{
