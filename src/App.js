@@ -9,7 +9,7 @@ import AddPhotos from './components/pokeWall/AddPhotos';
 import PokeBattle from './components/PokeBattle';
 import Socials from './components/Socials';
 import Pagination from 'react-bootstrap/Pagination';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 
 class App extends Component {
   state = {
@@ -49,9 +49,9 @@ class App extends Component {
       this.setState({
         posts: photos.data
       })
- console.log(photos.data)
-         }
-    
+      console.log(photos.data)
+    }
+
     catch (err) {
       console.log('Damn!')
     }
@@ -63,9 +63,9 @@ class App extends Component {
   }
 
 
-  
-  
- 
+
+
+
   removePhoto = async (postRemoved) => {
     console.log(postRemoved._id)
     // Delete from app and database. Maybe refactor
@@ -80,29 +80,35 @@ class App extends Component {
       posts: this.state.posts.concat([postSubmitted])
     })
   }
-       render() {
-         if (this.state.pokemon.length === 0) { return '...loading' }
+  render() {
+    if (this.state.pokemon.length === 0) { return '...loading' }
 
-         return (
-           <div>
-             <div className="App-header">
-               <img src={logo} className="App-logo" alt="logo" />
-               <h2>Pokemon Hub</h2>
-             </div>
+    return (
+      <div>
+        <div className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1>Pokemon Hub</h1>
+          <div id="nav">
+            <Link className="nav-link">Home</Link>
+            <Link className="nav-link">Pokedex</Link>
+            <Link className="nav-link">PokeWall</Link>
+            <Link className="nav-link">PokeBattle</Link>
+          </div>
+        </div>
 
 
-             <Switch>
-
-               <Route path="/pokemon/" render={props => (<PokeList {...props} listOfPokemon={this.state.pokemon} />)} />
-               {/* Battle component takes the parts of state thatit needs instead of the whole thing */}
-               <Route exact path="/battle" render={props => <PokeBattle {...props} blastHP={this.state.blastHP} charHP={this.state.charHP} />} />
-               <Route path="/pokewall" render={props => <PokeWall {...props} posts={this.state.posts} removePhoto={this.removePhoto} />} />
-               <Route exact path="/addphotos" render={props => <AddPhotos {...props} posts={this.state.posts} addPhoto={this.addPhoto} />} />
-             </Switch>
-             <Socials />
-           </div>
-         );
-       }
-   }
+        <Switch>
+          <Route exact path='/' render={(props) => <Home {...props} />}></Route>
+          <Route path="/pokemon/" render={props => (<PokeList {...props} listOfPokemon={this.state.pokemon} />)} />
+          {/* Battle component takes the parts of state thatit needs instead of the whole thing */}
+          <Route exact path="/battle" render={props => <PokeBattle {...props} blastHP={this.state.blastHP} charHP={this.state.charHP} />} />
+          <Route path="/pokewall" render={props => <PokeWall {...props} posts={this.state.posts} removePhoto={this.removePhoto} />} />
+          <Route exact path="/addphotos" render={props => <AddPhotos {...props} posts={this.state.posts} addPhoto={this.addPhoto} />} />
+        </Switch>
+        {/* <Socials /> */}
+      </div>
+    );
+  }
+}
 
 export default App;
