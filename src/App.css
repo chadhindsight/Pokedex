@@ -1,10 +1,6 @@
-/* @import ;
+/* @import url(//db.onlinewebfonts.com/c/831e1f4da157d96bc996f8c9f5f1e578?family=Pokemon+GB);
 @import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon); */
-
-@font-face {
-  font-family: pokemonGB;
-  src: url(//db.onlinewebfonts.com/c/831e1f4da157d96bc996f8c9f5f1e578?family=Pokemon+GB);
-}
+@font-face {font-family: "Pokemon"; src: url("//db.onlinewebfonts.com/t/831e1f4da157d96bc996f8c9f5f1e578.eot"); src: url("//db.onlinewebfonts.com/t/831e1f4da157d96bc996f8c9f5f1e578.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/831e1f4da157d96bc996f8c9f5f1e578.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/831e1f4da157d96bc996f8c9f5f1e578.woff") format("woff"), url("//db.onlinewebfonts.com/t/831e1f4da157d96bc996f8c9f5f1e578.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/831e1f4da157d96bc996f8c9f5f1e578.svg#Pokemon GB") format("svg"); }
 
 body{
     background-color: #1e272e;
@@ -20,7 +16,6 @@ h1 {
 .App-logo {
   animation: App-logo-spin infinite 10s linear;
   height: 50%;
-  font-family: "Pokemon";
   text-align: center;
 }
 @keyframes App-logo-spin {
@@ -53,7 +48,7 @@ a{
   padding: 0;
 }
 .social {
-   margin: 0 0.5rem;
+   margin-right: 0 0.5rem;
 }
 
 a:hover {
@@ -73,7 +68,7 @@ a:hover {
  /* TARGET INDIVIDUAL POKEMON IN LIST */
  #PokeList-item {
    text-transform: capitalize;
-   font-family: pokemonGB;
+   font-family: "Pokemon GB";
  }
  #PokeList-item:hover {
     cursor: pointer;
@@ -101,7 +96,7 @@ a:hover {
   border-radius: 8px 8px 0 0;
   height: 480px;
   width: 800px;
-  font-family: pokemonGB;
+  font-family: "Pokemon GB";
   margin-top: 1rem;
   margin-right: 60%;
 }
@@ -146,7 +141,7 @@ a:hover {
 
 .box {
   padding: 8px;
-  font-family: pokemonGB ;
+  font-family: "Pokemon GB";
   background: #333;
   border: 3px solid black;
   border-top: none;
