@@ -6,7 +6,6 @@ import Home from './components/Home';
 import PokeList from './components/PokeList';
 import PokeWall from './components/pokeWall/PokeWall'
 import AddPhotos from './components/pokeWall/AddPhotos';
-import Main from './components/pokeWall/Main';
 import PokeBattle from './components/PokeBattle';
 import Socials from './components/Socials';
 import Pagination from 'react-bootstrap/Pagination';
@@ -20,8 +19,8 @@ class App extends Component {
     // Every time we change page, we need to update the offset. Might remove this later
     offset: 0,
     totalPages: 0,
-      posts: []
-    
+    posts: []
+
   }
 
   // Making a func this way sets the 'this' context so you dont need to use a bind method
@@ -44,21 +43,22 @@ class App extends Component {
     }
 
   }
-  getPhotos = async (url) => {
+  getPhotos = async () => {
     try {
-      let photos = await axios.get('https://ironrest.herokuapp.com/ pokemon');
+      let photos = await axios.get(`https://ironrest.herokuapp.com/pokephotos`);
       this.setState({
         posts: photos.data
       })
-    }
-
+      console.log(photos.data)
+   }
+    
     catch(err) {
       console.log('Damn!')
     }
   }
   // Load the initial set of pokemon once the component renders
   componentDidMount() {
-    this.loadPokemon(this.props.baseURL)
+    this.loadPokemon(this.props.baseURL);
     this.getPhotos()
   }
 
@@ -94,9 +94,10 @@ class App extends Component {
       </div>
     )
   };
-  removePhoto = (postRemoved) => {
-    console.log(postRemoved.description)
-
+  removePhoto = async (postRemoved) => {
+    console.log(postRemoved._id)
+    // Delete from app and database. Maybe refactor
+    let photo = await axios.delete(`https://ironrest.herokuapp.com/pokephotos/${postRemoved._id}`) 
     this.setState({
       posts: this.state.posts.filter(p => p !== postRemoved)
     })
@@ -120,8 +121,8 @@ class App extends Component {
 
 
         <Switch>
-  
-          <Route path='/pokemon/' render={props => (<PokeList {...props} listOfPokemon={this.state.pokemon} />)} />
+
+          <Route path="/pokemon/" render={props => (<PokeList {...props} listOfPokemon={this.state.pokemon} />)} />
           {/* Battle component takes the parts of state thatit needs instead of the whole thing */}
           <Route exact path="/battle" render={props => <PokeBattle {...props} blastHP={this.state.blastHP} charHP={this.state.charHP} />} />
           <Route path="/pokewall" render={props => <PokeWall {...props} posts={this.state.posts} removePhoto={this.removePhoto} />} />
