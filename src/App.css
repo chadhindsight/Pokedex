@@ -47,9 +47,9 @@ a{
   margin-top: -1.15%;
   padding: 0;
 }
-/* .social {
-   margin-right: 75%;
-} */
+.social {
+   margin: 0 0.5rem;
+}
 
 a:hover {
   color: #f1c40f;
