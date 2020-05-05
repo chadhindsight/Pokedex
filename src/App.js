@@ -89,10 +89,10 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1>Pokemon Hub</h1>
           <div id="nav">
-            <Link className="nav-link">Home</Link>
-            <Link className="nav-link">Pokedex</Link>
-            <Link className="nav-link">PokeWall</Link>
-            <Link className="nav-link">PokeBattle</Link>
+            <Link to="/">Home</Link>
+            <Link to="/pokemon">Pokedex</Link>
+            <Link to="pokewall">PokeWall</Link>
+            <Link to="/battle">PokeBattle</Link>
           </div>
         </div>
 
