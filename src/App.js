@@ -56,6 +56,7 @@ class App extends Component {
       console.log('Damn!')
     }
   }
+
   // Load the initial set of pokemon once the component renders
   componentDidMount() {
     this.loadPokemon(this.props.baseURL);
@@ -69,10 +70,12 @@ class App extends Component {
   removePhoto = async (postRemoved) => {
     console.log(postRemoved._id)
     // Delete from app and database. Maybe refactor
-    let photo = await axios.delete(`https://ironrest.herokuapp.com/pokephotos/${postRemoved._id}`)
+    let post = await axios.delete(`https://ironrest.herokuapp.com/pokephotos/${postRemoved._id}`)
     this.setState({
-      posts: this.state.posts.filter(p => p !== postRemoved)
+      posts: this.state.posts.filter(p => p !== post)
     })
+    // Display updated list of photos
+    this.getPhotos()
   }
   // Add the post the user submitted to posts array
   addPhoto = (postSubmitted) => {
@@ -80,6 +83,7 @@ class App extends Component {
       posts: this.state.posts.concat([postSubmitted])
     })
   }
+  
   render() {
     if (this.state.pokemon.length === 0) { return '...loading' }
 
