@@ -3,6 +3,8 @@
 
 body{
     background-color: #1e272e;
+    /* width: 100vw;
+    height: 90vh; */
     
  }
 
@@ -12,7 +14,7 @@ h1 {
 /* LOGO & HEADER*/
 .App-logo {
   animation: App-logo-spin infinite 10s linear;
-  height: 80px;
+  height: 50%;
   font-family: "Pokemon";
   text-align: center;
 }
@@ -24,6 +26,7 @@ h1 {
   background-color: #222;
   font-family: "Pokemon";
   height: 145px;
+  display: block;
   padding: 20px;
   color:#f1c40f;
   text-align: center
@@ -38,14 +41,15 @@ a{
   padding: 20px;
 
 }
-.socials{
-  display: flex;
-  flex-direction: row;
-  margin-top: -7.5%;
-  justify-content: flex-end;
-  align-items: baseline;
-  margin-left: -35%;
+#socials {
+  /* margin-right: 50%; */
+  text-align: left;
+  margin-top: -1.15%;
+  padding: 0;
 }
+/* .social {
+   margin-right: 75%;
+} */
 
 a:hover {
   color: #f1c40f;
@@ -93,6 +97,8 @@ a:hover {
   height: 480px;
   width: 800px;
   font-family: "Pokemon GB";
+  margin-top: 1rem;
+  margin-right: 60%;
 }
 
 .opponent {
@@ -150,31 +156,7 @@ a:hover {
   float: left;
   font-size: 24px;
   width: 50%;
-}
-.box .continue {
-  position: absolute;
-  margin-top: 30px;
-  float: left;
-  width: 25%;
-  height: 100%;
-}
-.box .continue  button {
-  position: relative;
-  float: left;
-  background: #666;
-  border: 3px solid #888;
-  border-radius: 4px;
-  color: #fff;
-  font-family: monospace;
-  font-size: 20px;
-  line-height: 14px;
-  margin: 4px;
-  padding: 16px;
-  outline: none !important;
-}
-.box .continue button:hover {
-  background: #777;
-  border-color: #999;
+    font-family: "Pokemon GB";
 }
 
 .box .continue button:active {
