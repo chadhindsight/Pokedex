@@ -13,10 +13,9 @@ class AddPhoto extends Component {
     handleSubmit(event) {
         // //disable default page reload
         event.preventDefault();
-        // // Get data entered in input fields
-        // const imageLink = event.target.elements.name.value
-        // const description = event.target.elements.description.value
-        axios.post('https://ironrest.herokuapp.com/ pokemon', this.state).then(res=>{
+        
+        // This is the actual working url
+        axios.post('https://ironrest.herokuapp.com/pokephotos', this.state).then(res=>{
             this.props.history.push('/pokewall')
                 console.log(this)
         })
