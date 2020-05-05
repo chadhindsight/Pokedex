@@ -6,11 +6,14 @@ import ReactAudioPlayer from 'react-audio-player';
 class PokeBattle extends Component {
     state = {
         blastHP: 105,
-        charHP: 100,
+        charHP: 1,
         playerTurn: true,
         dynamicMessage: 'What should Blastoise do?',
+        // Determines who is getting hit
         playerHit: false,
-        opponentHit: false
+        opponentHit: false,
+        // Determines if the game is over
+        gameOver: false
     }
     componentDidUpdate = (prevProps, prevState) => {
         console.log(prevState)
@@ -34,9 +37,21 @@ class PokeBattle extends Component {
         }
 
 
-
-        setTimeout(this.opponentAttack2, 2000)
-
+        if (opponentHP !== 0) {
+            setTimeout(this.opponentAttack2, 2000)
+        }
+        // GAME ENDED
+        if( opponentHP === 0) {
+            setTimeout(() => {
+                alert("You won!")
+                this.setState({
+                    blastHP: 105,
+                    charHP: 100,
+                    dynamicMessage: 'What should Blastoise do?',
+                    playerTurn: true
+                })
+            }, 1000);
+        }
         this.setState({
             charHP: opponentHP,
             dynamicMessage: message,
@@ -48,6 +63,11 @@ class PokeBattle extends Component {
     opponentAttack2 = () => {
         if (this.state.charHP <= 0) {
             alert("You won!")
+            this.setState({
+                blastHP: 105,
+                charHP: 100,
+                dynamicMessage: 'What should Blastoise do?',
+            })
         }
 
         let missed = this.missRate()

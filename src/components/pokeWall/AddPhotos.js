@@ -10,14 +10,18 @@ class AddPhoto extends Component {
             [e.target.name]: e.target.value
         })
     }
-    handleSubmit(event) {
+    
+    handleSubmit(e) {
         // //disable default page reload
-        event.preventDefault();
+        e.preventDefault();
         
         // This is the actual working url
         axios.post('https://ironrest.herokuapp.com/pokephotos', this.state).then(res=>{
             this.props.history.push('/pokewall')
-                console.log(this)
+            //Add the new photo in DB to pokewall list of pics
+            this.props.addPhoto(res.data.ops[0])
+            console.log(res.data.ops)
+                
         })
 
         // imageLink && description ? 
