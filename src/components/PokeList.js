@@ -18,7 +18,7 @@ const PokeList = ({ listOfPokemon }) => {
     return (
         <MDBContainer>
             <MDBRow>
-                <MDBCol size="5">
+                <MDBCol id="poke-col" size="5">
                     <MDBListGroup>
                         {pokemon}
                     </MDBListGroup>

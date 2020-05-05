@@ -6,7 +6,7 @@ import ReactAudioPlayer from 'react-audio-player';
 class PokeBattle extends Component {
     state = {
         blastHP: 105,
-        charHP: 1,
+        charHP: 100,
         playerTurn: true,
         dynamicMessage: 'What should Blastoise do?',
         // Determines who is getting hit
@@ -154,10 +154,10 @@ class PokeBattle extends Component {
                         </div>
                     }
                 </div>
-                {/* <ReactAudioPlayer
+                <ReactAudioPlayer
                     src="../battle.mp3"
                     controls
-                /> */}
+                />
             </div >
         );
     }
