@@ -1,5 +1,10 @@
-@import url(//db.onlinewebfonts.com/c/831e1f4da157d96bc996f8c9f5f1e578?family=Pokemon+GB);
-@import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
+/* @import ;
+@import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon); */
+
+@font-face {
+  font-family: pokemonGB;
+  src: url(//db.onlinewebfonts.com/c/831e1f4da157d96bc996f8c9f5f1e578?family=Pokemon+GB);
+}
 
 body{
     background-color: #1e272e;
@@ -68,7 +73,7 @@ a:hover {
  /* TARGET INDIVIDUAL POKEMON IN LIST */
  #PokeList-item {
    text-transform: capitalize;
-   font-family: "Pokemon GB";
+   font-family: pokemonGB;
  }
  #PokeList-item:hover {
     cursor: pointer;
@@ -96,7 +101,7 @@ a:hover {
   border-radius: 8px 8px 0 0;
   height: 480px;
   width: 800px;
-  font-family: "Pokemon GB";
+  font-family: pokemonGB;
   margin-top: 1rem;
   margin-right: 60%;
 }
@@ -141,7 +146,7 @@ a:hover {
 
 .box {
   padding: 8px;
-  font-family: "Pokemon GB";
+  font-family: pokemonGB ;
   background: #333;
   border: 3px solid black;
   border-top: none;
