@@ -9,8 +9,8 @@ const PokeList = ({ listOfPokemon }) => {
     let pokemon = listOfPokemon.map((monster) => {
         // console.log(monster.name)
         return (
-            <Link to={`/pokemon/${monster.name}`}
-                key={monster.name}><MDBListGroupItem className='PokeList-item'>{monster.name}</MDBListGroupItem>
+            <Link id="list-poke" to={`/pokemon/${monster.name}`}
+                key={monster.name}><MDBListGroupItem id='PokeList-item'>{monster.name}</MDBListGroupItem>
             </Link>
         )
     });

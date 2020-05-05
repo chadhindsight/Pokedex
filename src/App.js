@@ -94,6 +94,7 @@ class App extends Component {
             <Link to="pokewall">PokeWall</Link>
             <Link to="/battle">PokeBattle</Link>
           </div>
+          <Socials />
         </div>
 
 
@@ -105,7 +106,6 @@ class App extends Component {
           <Route path="/pokewall" render={props => <PokeWall {...props} posts={this.state.posts} removePhoto={this.removePhoto} />} />
           <Route exact path="/addphotos" render={props => <AddPhotos {...props} posts={this.state.posts} addPhoto={this.addPhoto} />} />
         </Switch>
-        {/* <Socials /> */}
       </div>
     );
   }

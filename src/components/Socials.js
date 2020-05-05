@@ -14,24 +14,24 @@ import {
 
 const Socials = () => {
     return (
-        <>
+        < div className="socials" >
             {/* The url passed in will be the url you want to share on social media */}
-            <FacebookShareButton url={window.location.href} size={32}>
-                <FacebookIcon />
+            <FacebookShareButton url={window.location.href} >
+                <FacebookIcon size={25}/>
             </FacebookShareButton> 
             <TwitterShareButton url="https://twitter.com/home">
-                <TwitterIcon />
+                <TwitterIcon size={25}/>
             </TwitterShareButton>
             <RedditShareButton url="https://twitter.com/">
-                < RedditIcon/>
+                < RedditIcon size={25}/>
              </RedditShareButton>
             <LinkedinShareButton url="https://chadhindsight.github.io/simon-jon/">
-                <LinkedinIcon />
+                <LinkedinIcon size={25}/>
             </LinkedinShareButton>
             < TumblrShareButton url="https://chadhindsight.github.io/simon-jon/">
-                <TumblrIcon />
+                <TumblrIcon size={25}/>
             </TumblrShareButton>
-        </>
+        </ div>
     )
 }
 export default Socials;

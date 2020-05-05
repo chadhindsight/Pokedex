@@ -1,4 +1,5 @@
 @import url(//db.onlinewebfonts.com/c/831e1f4da157d96bc996f8c9f5f1e578?family=Pokemon+GB);
+@import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
 
 body{
     background-color: #1e272e;
@@ -12,40 +13,69 @@ h1 {
 .App-logo {
   animation: App-logo-spin infinite 10s linear;
   height: 80px;
+  font-family: "Pokemon";
   text-align: center;
-}
-.App-header {
-  background-color: #222;
-  font-family: "Pokemon GB";
-  height: 145px;
-  padding: 20px;
-  color: white;
-  text-align: center
 }
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-/* HOME */
+.App-header {
+  background-color: #222;
+  font-family: "Pokemon";
+  height: 145px;
+  padding: 20px;
+  color:#f1c40f;
+  text-align: center
+}
+#nav {
+  margin-top: -2.5%;
+  margin-left: 50%;
+  text-align: right;
+  color: white;
+}
+a{
+  padding: 20px;
+
+}
+.socials{
+  display: flex;
+  flex-direction: row;
+  margin-top: -7.5%;
+  justify-content: flex-end;
+  align-items: baseline;
+  margin-left: -35%;
+}
+
+a:hover {
+  color: #f1c40f;
+  font-weight: bolder;
+}
+/* HOME SECTION */
 .home{
   color: #ffffff;
-  font-family: "Pokemon GB";
-  text-align: center;
+  margin-top: 2rem;
+  text-align: justify;
+  /* text-align: center; */
+}
+.intro {
+
 }
  /* TARGET INDIVIDUAL POKEMON IN LIST */
- .PokeList-item {
+ #PokeList-item {
    text-transform: capitalize;
    font-family: "Pokemon GB";
  }
- .PokeList-item:hover {
+ #PokeList-item:hover {
     cursor: pointer;
    background-color: #3498db;
    color: blanchedalmond;
    font-weight: bolder;
  }
 /* Remove underline from pokemon links */
- a:hover {
+ #list-poke:hover {
    text-decoration: none;
+   color: none;
  }
  /* Poke-details list secion*/
  .poke-details{
