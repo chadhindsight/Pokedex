@@ -20,6 +20,7 @@ class PokeDetails extends Component {
         })
         // Use that same url to make a request and use data from the response
         let response = await axios.get(`${specificPokemon.url}`)
+        console.log(response, pokemonId)
         let moves = response.data.moves.slice(0, 3).map(item => item.move.name)
         // Set Name, Type, Moves, Weight, Game appearances(game_indices) & Photo
         this.setState({
@@ -32,6 +33,8 @@ class PokeDetails extends Component {
         })
         // console.log(this.state.img)
     }
+    
+
     displayDetails = () => {
         return (
             <div className='poke-details'>

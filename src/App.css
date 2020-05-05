@@ -1,5 +1,8 @@
- body{
+@import url(//db.onlinewebfonts.com/c/831e1f4da157d96bc996f8c9f5f1e578?family=Pokemon+GB);
+
+body{
     background-color: #1e272e;
+    
  }
 
 h1 {
@@ -13,6 +16,7 @@ h1 {
 }
 .App-header {
   background-color: #222;
+  font-family: "Pokemon GB";
   height: 145px;
   padding: 20px;
   color: white;
@@ -22,9 +26,16 @@ h1 {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+/* HOME */
+.home{
+  color: #ffffff;
+  font-family: "Pokemon GB";
+  text-align: center;
+}
  /* TARGET INDIVIDUAL POKEMON IN LIST */
  .PokeList-item {
    text-transform: capitalize;
+   font-family: "Pokemon GB";
  }
  .PokeList-item:hover {
     cursor: pointer;
@@ -51,6 +62,7 @@ h1 {
   border-radius: 8px 8px 0 0;
   height: 480px;
   width: 800px;
+  font-family: "Pokemon GB";
 }
 
 .opponent {
@@ -93,6 +105,7 @@ h1 {
 
 .box {
   padding: 8px;
+  font-family: "Pokemon GB";
   background: #333;
   border: 3px solid black;
   border-top: none;

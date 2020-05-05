@@ -7,7 +7,7 @@ import PokeDetails from './PokeDetails';
 const PokeList = ({ listOfPokemon }) => {
 
     let pokemon = listOfPokemon.map((monster) => {
-        console.log(monster.name)
+        // console.log(monster.name)
         return (
             <Link to={`/pokemon/${monster.name}`}
                 key={monster.name}><MDBListGroupItem className='PokeList-item'>{monster.name}</MDBListGroupItem>
@@ -34,4 +34,3 @@ const PokeList = ({ listOfPokemon }) => {
 }
 
 export default PokeList;
-
