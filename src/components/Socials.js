@@ -19,16 +19,16 @@ const Socials = () => {
             <FacebookShareButton url={window.location.href} >
                 <FacebookIcon size={25} />
             </FacebookShareButton> 
-            <TwitterShareButton  url="https://twitter.com/home">
+            <TwitterShareButton url="https://zen-thompson-50a1a4.netlify.app/">
                 <TwitterIcon size={25} />
             </TwitterShareButton>
-            <RedditShareButton url="https://twitter.com/">
+            <RedditShareButton url="https://zen-thompson-50a1a4.netlify.app/">
                 < RedditIcon size={25} />
              </RedditShareButton>
-            <LinkedinShareButton url="https://chadhindsight.github.io/simon-jon/">
+            <LinkedinShareButton url="https://zen-thompson-50a1a4.netlify.app/">
                 <LinkedinIcon size={25} />
             </LinkedinShareButton>
-            < TumblrShareButton url="https://chadhindsight.github.io/simon-jon/">
+            < TumblrShareButton url="https://zen-thompson-50a1a4.netlify.app/">
                 <TumblrIcon size={25} />
             </TumblrShareButton>
         </ div>

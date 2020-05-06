@@ -61,8 +61,9 @@ a:hover {
   /* text-align: center; */
 }
 #pikachu{
- margin-left: 50%;
+ margin-left: 45%;
  margin-top: 1%;
+ position: fixed;
 }
 .intro{
   animation: fadeAndScale .8s ease-in;
@@ -73,16 +74,19 @@ p, .how-it-works-text-text{
   text-align: justify;
   margin-left: 5%;
 }
+div .how-it-works-text-text{
+  animation: fadeAndScale .9s ease-in;
+}
 .how-it-works{
-  margin-right: 0;
   background-image: url('https://images.unsplash.com/photo-1531525797753-909788106ccb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80');
   background-attachment: fixed;
   background-position: center;
   /* background-repeat: no-repeat; */
   /* background-size: cover; */
+  font-family: "Pokemon";
   height: 1600px;
-  width: 97%;
-  margin-top: 50%;
+  width: 1365px;
+  margin-top: 47%;
   /* z-index: -4; */
 }
 @keyframes fadeAndScale {
