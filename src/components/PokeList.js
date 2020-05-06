@@ -24,7 +24,7 @@ const PokeList = ({ listOfPokemon }) => {
                     </MDBListGroup>
                 </MDBCol>
                 <Switch>
-                    <MDBCol size="7">
+                    <MDBCol id='poke-details' size="7">
                         <Route exact path='/pokemon/:id' render={props => <PokeDetails {...props} pokemon={listOfPokemon} />} />
                     </MDBCol>
                 </Switch>

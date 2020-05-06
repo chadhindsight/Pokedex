@@ -8,7 +8,7 @@ import PokeWall from './components/pokeWall/PokeWall'
 import AddPhotos from './components/pokeWall/AddPhotos';
 import PokeBattle from './components/PokeBattle';
 import Socials from './components/Socials';
-import Pagination from 'react-bootstrap/Pagination';
+// import Pagination from 'react-bootstrap/Pagination';
 import { Route, Switch, Link } from 'react-router-dom';
 
 class App extends Component {
@@ -83,19 +83,19 @@ class App extends Component {
       posts: this.state.posts.concat([postSubmitted])
     })
   }
-  
+
   render() {
     if (this.state.pokemon.length === 0) { return '...loading' }
 
     return (
-      <div>
+      <div className="parallax">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 id="title">Pokemon Hub</h1>
           <div id="nav">
             <Link to="/">Home</Link>
             <Link to="/pokemon">Pokedex</Link>
-            <Link to="pokewall">PokeWall</Link>
+            <Link to="/pokewall">PokeWall</Link>
             <Link to="/battle">PokeBattle</Link>
           </div>
           <Socials />

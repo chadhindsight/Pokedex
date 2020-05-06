@@ -37,15 +37,15 @@ class PokeDetails extends Component {
 
     displayDetails = () => {
         return (
-            <div className='poke-details'>
+            <div id='pokemon-box'>
+                <img src={this.state.img} alt="what the pokemon looks like" height="300" />
                 <h1>{this.state.pokemonName}</h1>
-                <p> Type: {this.state.type}</p>
-                <ul>
-                    Move List: {this.state.moves}
-                </ul>
-                <p> Weight: {this.state.weight} lbs.</p>
-                <p>Game appearances: {this.state.appearances}</p>
-                <img src={this.state.img} alt="what the pokemon looks like" height="150"/>
+                <h4> Type: {this.state.type}</h4>
+                {/* <ul>
+                    <h4>Move List: {this.state.moves}</h4>
+                </ul> */}
+                <h4> Weight: {this.state.weight} lbs.</h4>
+                <h4>Game appearances: {this.state.appearances}</h4>
             </div>
         )
     }

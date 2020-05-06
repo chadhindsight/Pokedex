@@ -15,13 +15,9 @@ class PokeBattle extends Component {
         // Determines if the game is over
         gameOver: false
     }
-    componentDidUpdate = (prevProps, prevState) => {
-        console.log(prevState)
-    }
 
     game = (e) => {
         console.log(this.state.charHP)
-
 
         let opponentHP = this.state.charHP
         let playerDamage = 0
@@ -130,7 +126,8 @@ class PokeBattle extends Component {
 
     render() {
         return (
-            <div>
+            <div id="game-container">
+                <div>
                 <div className="game" ref={this.buttonRef}>
                     <Opponent hp={this.state.charHP} isHit={this.state.opponentHit} />
                     <Player hp={this.state.blastHP}  isHit={this.state.playerHit}/>
@@ -158,6 +155,7 @@ class PokeBattle extends Component {
                     src="../battle.mp3"
                     controls
                 />
+                </div>
             </div >
         );
     }

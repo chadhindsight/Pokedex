@@ -103,20 +103,27 @@ a:hover {
    color: none;
    margin-left: 0;
  }
- /* Poke-details list secion*/
- /* .poke-details{
-   color: aliceblue;
- } */
 
 
-#pokemon-box{
+#pokemon-box {
   text-align: center;
+  animation: appearance ease-in-out 1s ;
   border: 2px solid whitesmoke;
   background-color: #0a3d62;
-  /* border-radius: 0.7rem; */
+  border-radius: 1.7rem;
   margin-right: 27%;
   color:aliceblue;
   font-family: 'Pokemon GB';
+}
+@keyframes appearance{
+  from {
+    opacity: 0;
+    transform: scale3d(.75 .59 .75);
+  }
+  to{
+    opacity: 1;
+    transform: scale3d(1,1,1)
+  }
 }
 
 /* GAME SECTION */
