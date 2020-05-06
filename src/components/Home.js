@@ -14,14 +14,14 @@ const Home = (props) => {
                  This site gives you a platform to celebrate, express, and share your love of Pokémon with others from across the globe.            
                 </p>
             
-            <ScrollIntoView selector=".how-it-works">
+            <ScrollIntoView selector=".how-it-works" style={{animation: 'fadeAndScale .9s ease-in'}}>
                 <img src="https://image.flaticon.com/icons/svg/528/528098.svg" id="pikachu"
                     alt="pikachu" height="50px" />
             </ScrollIntoView>
 
-            <div className="how-it-works">   
-            <h2 className="how-it-works-text">How it Works</h2>    
-                <p className="how-it-works-text">Pokémon Hub has three main parts:</p>
+            <div className="how-it-works" style={{ animation: 'fadeAndScale .9s ease-in' }}>   
+            <h1 className="how-it-works-text">How it Works</h1>    
+                <h4 className="how-it-works-text">Pokémon Hub has three main sctions:</h4>
                 <ul className="how-it-works-text">
                     <li>A Pokédex where you can learn about any Pokémon you want</li>
                     <li>An instagram-like photo collection where you can post and share pictures</li>
