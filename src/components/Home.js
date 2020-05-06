@@ -21,7 +21,7 @@ const Home = (props) => {
 
             <div className="how-it-works" style={{ animation: 'fadeAndScale .9s ease-in' }}>   
             <h1 className="how-it-works-text">How it Works</h1>    
-                <h4 className="how-it-works-text">Pokémon Hub has three main sctions:</h4>
+                <h4 className="how-it-works-text">Pokémon Hub has three main sections:</h4>
                 <ul className="how-it-works-text">
                     <li>A Pokédex where you can learn about any Pokémon you want</li>
                     <li>An instagram-like photo collection where you can post and share pictures</li>
