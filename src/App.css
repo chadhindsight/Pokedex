@@ -47,16 +47,7 @@ a{
   margin-top: -1.15%;
   padding: 0;
 }
-. {
-  width: 200px;
-  height: 100px;
-  /* center content using flex box */
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  /* overlay */
-  box-shadow: 0 0 0 100px inset, 0 0 5px grey;
-}
+
 a:hover {
   color: #f1c40f;
   font-weight: bolder;
