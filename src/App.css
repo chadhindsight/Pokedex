@@ -47,15 +47,22 @@ a{
   margin-top: -1.15%;
   padding: 0;
 }
-
-
+. {
+  width: 200px;
+  height: 100px;
+  /* center content using flex box */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  /* overlay */
+  box-shadow: 0 0 0 100px inset, 0 0 5px grey;
+}
 a:hover {
   color: #f1c40f;
   font-weight: bolder;
 }
 /* HOME SECTION */
 .home{
-  color: #ffffff;
   margin-top: 2rem;
   text-align: justify;
   /* text-align: center; */
@@ -74,8 +81,10 @@ a:hover {
     transform: scale3d(1,1,1)
   }
 }
+
 #poke-col {
-  margin-left: -11.78%;
+  /* margin-left: -11.78%; */
+  right: 9.7vw;
 }
  /* TARGET POKEMON IN LIST */
  #PokeList-item {
@@ -95,13 +104,30 @@ a:hover {
    margin-left: 0;
  }
  /* Poke-details list secion*/
- .poke-details{
+ /* .poke-details{
    color: aliceblue;
- }
+ } */
+
+
+#pokemon-box{
+  text-align: center;
+  border: 2px solid whitesmoke;
+  background-color: #0a3d62;
+  /* border-radius: 0.7rem; */
+  margin-right: 27%;
+  color:aliceblue;
+  font-family: 'Pokemon GB';
+}
 
 /* GAME SECTION */
+#game-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .game {
   position: relative;
+  margin: auto;
   background-image: url('http://bit.ly/pokemonbg');
   background-size: 100% 100%;
   background-repeat: no-repeat;
