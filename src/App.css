@@ -4,8 +4,9 @@
 
 body{
     background-color: #1e272e;
-    /* width: 100vw;
-    height: 90vh; */
+     width: 100vw;
+    height: 90vh; 
+    
     
  }
 
@@ -54,13 +55,23 @@ a:hover {
 }
 /* HOME SECTION */
 .home{
-  margin-top: 2rem;
+  margin-top: 2rem;  
+  color: white;
   text-align: justify;
   /* text-align: center; */
 }
-
+#pikachu{
+ margin-left: 50%;
+ margin-top: 1%;
+}
 .intro{
   animation: fadeAndScale .8s ease-in;
+}
+/* APLLY TO BOTH */
+p, .how-it-works{
+  width: 95vw;
+  text-align: justify;
+  margin-left: 2vw;
 }
 @keyframes fadeAndScale {
   from {

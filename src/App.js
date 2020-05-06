@@ -91,7 +91,7 @@ class App extends Component {
       <div className="parallax">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 id="title">Pokemon Hub</h1>
+          <h1 id="title">Pokémon Hub</h1>
           <div id="nav">
             <Link to="/">Home</Link>
             <Link to="/pokemon">Pokedex</Link>
