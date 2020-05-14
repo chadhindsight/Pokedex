@@ -108,8 +108,8 @@ div .how-it-works-text-text {
  /* TARGET POKEMON IN LIST */
  #PokeList-item {
    text-transform: capitalize;
-   font-family: "Pokemon GB";
  }
+ 
  #PokeList-item:hover {
     cursor: pointer;
    background-color: #3498db;
