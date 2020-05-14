@@ -109,7 +109,7 @@ div .how-it-works-text-text {
  #PokeList-item {
    text-transform: capitalize;
  }
- 
+
  #PokeList-item:hover {
     cursor: pointer;
    background-color: #3498db;
@@ -132,7 +132,6 @@ div .how-it-works-text-text {
   border-radius: 1.7rem;
   margin: 8% 12%;
   color:aliceblue;
-  font-family: 'Pokemon GB';
 }
 @keyframes appearance{
   from {
