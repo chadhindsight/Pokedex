@@ -116,7 +116,7 @@ div .how-it-works-text-text {
    color: blanchedalmond;
    font-weight: bolder;
  }
-/* Remove underline from pokemon links */
+/* Remove underline from pokemon links please */
  #list-poke:hover {
    text-decoration: none;
    color: none;
